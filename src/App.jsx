@@ -1,26 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import ProductDetails from './components/ProductDetails';
 
-import logo from './logo.png';
 import './App.css';
 
 function App() {
+  const [productInfo, setProductInfo] = useState();
+
+  useEffect(() => {
+    let id = 5;
+    fetch(`http://localhost:8000/api/products/${id}/productsheet`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data);
+        setProductInfo(data);
+      });
+  }, []);
+  // console.log(productInfo);
+
   return (
     <main className="rsw-container">
-      <div
-        className="rsw-item"
-        style={{
-          paddingBottom: '2rem',
-        }}>
-        <img src={logo} width="20%" alt="WCS logo" />
-      </div>
-      <div className="rsw-item">
-        <p>Welcome to your fresh, lightweight, React App ! &#127752;</p>
-      </div>
-      <div className="rsw-item">
-        <p>
-          Start in the <code>App.jsx</code> component !
-        </p>
-      </div>
+      <ProductDetails productInfo={productInfo} />
     </main>
   );
 }
