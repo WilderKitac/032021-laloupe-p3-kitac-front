@@ -10,6 +10,7 @@ function ProductDetails(props) {
   const appearTab = (index) => {
     setStateTabs(index);
   };
+
   return (
     <section className="ps_mainSection">
       <h1 className="ps_title">{Product?.maininformation[0].name}</h1>
@@ -24,9 +25,14 @@ function ProductDetails(props) {
         </Carousel>
       </div>
       <div>
-        <p>
-          <strong>Difficulté : </strong> {Product?.maininformation[0].difficulty}
-        </p>
+        <div className="ps_difficulty">
+          <p>
+            <strong>Difficulté : </strong>
+          </p>
+          <img className="ps_button" src="../src/images/button-3D.png" alt="bouton" />
+          <img className={Product?.maininformation[0].difficulty === 'Moyenne' ? "ps_button" : "ps_button ps_button_inactive"} src="../src/images/button-3D.png" alt="bouton" />
+          <img className={Product?.maininformation[0].difficulty === 'Difficile' ? "ps_button" : "ps_button ps_button_inactive"} src="../src/images/button-3D.png" alt="bouton" />
+        </div>
         <p>
           <strong>Réalisation : </strong>+/- {Product?.maininformation[0].completion_time}
         </p>

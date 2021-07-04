@@ -19,6 +19,20 @@
 .carousel-root {
   width: 70%;
 }
+.ps_difficulty {
+  display : flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.ps_button {
+  filter: opacity(100%);
+  width: 1.5em;
+}
+
+.ps_button_inactive{
+  filter: opacity(50%);
+}
 
 .ps_material_container {
   margin: 1em;
@@ -89,3 +103,4 @@
 .ps_active_tabs {
   background: #0d3648;
 }
+
