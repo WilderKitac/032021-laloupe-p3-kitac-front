@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import ProductDetails from './components/ProductSheet/ProductDetails';
 
 import './App.css';
@@ -19,7 +20,14 @@ function App() {
 
   return (
     <main className="rsw-container">
-      <ProductDetails productInfo={productInfo} />
+      <Switch>
+        <Route exact path="/">
+          <div>Welcome page</div>
+        </Route>
+        <Route path="/ProductSheet">
+          <ProductDetails productInfo={productInfo} />
+        </Route>
+      </Switch>
     </main>
   );
 }
