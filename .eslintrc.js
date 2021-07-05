@@ -28,5 +28,6 @@ module.exports = {
     'react/function-component-definition': [2, { namedComponents: 'function-declaration' }],
     'no-console': 1,
     'react/jsx-filename-extension': 'error',
+    'react/prop-types': 0,
   },
 };

@@ -1,0 +1,106 @@
+.ps_mainSection {
+  background: #f4e2de;
+  color: #0d3648;
+}
+
+.ps_title {
+  background: #0d3648;
+  color: white;
+  padding-left: 0.5em;
+}
+
+.ps_slider_container {
+  width: 100%;
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-root {
+  width: 70%;
+}
+.ps_difficulty {
+  display : flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.ps_button {
+  filter: opacity(100%);
+  width: 1.5em;
+}
+
+.ps_button_inactive{
+  filter: opacity(50%);
+}
+
+.ps_material_container {
+  margin: 1em;
+}
+
+.ps_materials {
+  display: flex;
+  width: 90%;
+}
+
+.ps_materials figure {
+  width: 20%;
+  margin: 0.05em;
+  text-align: center;
+}
+
+.ps_material_image {
+  width: 50px;
+  height: 50px;
+  border: solid 1px #0d3648;
+}
+
+.ps_tabContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+  color: white;
+}
+
+.ps_tabs_block {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ps_tabs {
+  width: 100%;
+  background: #999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-right: 1px solid grey;
+  padding-left: 1px;
+  border-top-right-radius: 5px;
+  box-shadow: 5px 0px 11px 0px #cecece;
+}
+
+.ps_tabsContent {
+  width: 100%;
+  text-align: justify;
+  border-top: none;
+  background: #0d3648;
+  color: white;
+}
+
+.ps_content {
+  display: none;
+}
+.ps_active-content {
+  padding: 1em;
+  display: block;
+}
+
+.ps_active_tabs {
+  background: #0d3648;
+}
+
