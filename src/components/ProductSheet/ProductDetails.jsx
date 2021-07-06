@@ -35,15 +35,15 @@ function ProductDetails(props) {
             <strong>Difficulté : </strong>
           </p>
           <div>
-            <img className="ps_button" src="../src/images/button-3D.png" alt="bouton" />
+            <img className="ps_button" src="../src/img/button-3D.png" alt="bouton" />
             <img
               className={Product?.maininformation[0].difficulty === 'Moyenne' ? 'ps_button' : 'ps_button ps_button_inactive'}
-              src="../src/images/button-3D.png"
+              src="../src/img/button-3D.png"
               alt="bouton"
             />
             <img
               className={Product?.maininformation[0].difficulty === 'Difficile' ? 'ps_button' : 'ps_button ps_button_inactive'}
-              src="../src/images/button-3D.png"
+              src="../src/img/button-3D.png"
               alt="bouton"
             />
           </div>
