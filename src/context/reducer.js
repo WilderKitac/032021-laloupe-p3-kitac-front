@@ -26,9 +26,21 @@ const reducer = (state, action) => {
     // case 'RESET_JWT': {
     //   return { ...state, jwt: null };
     // }
-    case 'SET_CART': {
+    case 'ADD_CART': {
       const cartToUpdate = [...state.cart];
-      cartToUpdate.push(action.cart);
+      const itemIndex = cartToUpdate.findIndex((item) => {
+        return (
+          item.id === action.item.id &&
+          item.selectedSize === action.item.selectedSize &&
+          item.selectedMaterial === action.item.selectedMaterial &&
+          item.selectedSupplies === action.item.selectedSupplies
+        );
+      });
+      if (itemIndex > -1) {
+        cartToUpdate[itemIndex].quantity++;
+      } else {
+        cartToUpdate.push({ ...action.item, quantity: 1 });
+      }
       return { ...state, cart: cartToUpdate };
     }
     default: {

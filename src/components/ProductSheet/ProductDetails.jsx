@@ -10,17 +10,16 @@ function ProductDetails(props) {
   const [selectedSize, setSelectedSize] = useState('Taille');
   const [selectedMaterial, setSelectedMaterial] = useState('Matière');
   const [selectedSupplies, setSelectedSupplies] = useState(false);
-  console.log(cart);
-
-  function selectProduct() {
-    const tempTable = { selectedSize, selectedMaterial, selectedSupplies };
-    dispatch({ type: 'SET_CART', cart: tempTable });
-  }
 
   const Product = props.productInfo;
   const appearTab = (index) => {
     setStateTabs(index);
   };
+
+  function selectProduct() {
+    const tempTable = { id: Product.maininformation[0].id, selectedSize, selectedMaterial, selectedSupplies };
+    dispatch({ type: 'ADD_CART', item: tempTable });
+  }
 
   return (
     <section className="ps_mainSection">
