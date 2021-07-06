@@ -1,0 +1,28 @@
+.logoHome {
+  width: 15%;
+}
+
+.backgroundHome {
+  background-color: rgb(235, 128, 128);
+}
+
+.encadreHome {
+  display: flex;
+  justify-content: center;
+}
+
+.titreHome,
+.titleShop {
+  text-align: center;
+  margin-top: 2%;
+}
+
+.encadreTitre {
+  margin-top: 3%;
+}
+
+.imgShop {
+  display: flex;
+  justify-content: center;
+}
+
