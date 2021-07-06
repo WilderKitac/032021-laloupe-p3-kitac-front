@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Home from './components/Home/Home';
+import Footer from './components/Footer/Footer';
 import ProductDetails from './components/ProductSheet/ProductDetails';
 
 import './App.css';
@@ -12,7 +14,6 @@ function App() {
     fetch(`http://localhost:8000/api/products/${id}/productsheet`)
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
         setProductInfo(data);
       });
   }, []);
@@ -22,7 +23,8 @@ function App() {
     <main className="rsw-container">
       <Switch>
         <Route exact path="/">
-          <div>Welcome page</div>
+        <Home />
+        <Footer />
         </Route>
         <Route path="/ProductSheet">
           <ProductDetails productInfo={productInfo} />
