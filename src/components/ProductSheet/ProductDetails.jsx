@@ -1,15 +1,21 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
+import { useStateValue } from '../../context/contextProvider';
 import './ProductSheet.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
 function ProductDetails(props) {
   const [stateTabs, setStateTabs] = useState(1);
-  const [selectedSize, setSelectedSize] = useState('Tailles');
+  const [{ cart }, dispatch] = useStateValue();
+  const [selectedSize, setSelectedSize] = useState('Taille');
   const [selectedMaterial, setSelectedMaterial] = useState('Matière');
   const [selectedSupplies, setSelectedSupplies] = useState(false);
+  console.log(cart);
+
+  function selectProduct() {
+    const tempTable = { selectedSize, selectedMaterial, selectedSupplies };
+    dispatch({ type: 'SET_CART', cart: tempTable });
+  }
 
   const Product = props.productInfo;
   const appearTab = (index) => {
@@ -145,6 +151,9 @@ function ProductDetails(props) {
           <option value="true">Oui</option>
           <option value="false">Non</option>
         </select>
+        <button className="ps_button" onClick={selectProduct}>
+          Ajouter aux panier
+        </button>
       </div>
     </section>
   );
