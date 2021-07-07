@@ -4,6 +4,7 @@ import { useStateValue } from '../src/context/contextProvider';
 import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
 import ProductDetails from './components/ProductSheet/ProductDetails';
+import Login from './components/Login/Login';
 
 import './App.css';
 
@@ -28,6 +29,9 @@ function App() {
         </Route>
         <Route path="/ProductSheet">
           <ProductDetails />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
       </Switch>
     </main>
