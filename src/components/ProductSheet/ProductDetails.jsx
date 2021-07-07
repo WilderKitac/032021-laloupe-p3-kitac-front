@@ -1,13 +1,13 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
+import { useStateValue } from '../../context/contextProvider';
 import './ProductSheet.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
 function ProductDetails(props) {
   const [stateTabs, setStateTabs] = useState(1);
-  const [selectedSize, setSelectedSize] = useState('Tailles');
+  const [{ cart }, dispatch] = useStateValue();
+  const [selectedSize, setSelectedSize] = useState('Taille');
   const [selectedMaterial, setSelectedMaterial] = useState('Matière');
   const [selectedSupplies, setSelectedSupplies] = useState(false);
 
@@ -15,6 +15,11 @@ function ProductDetails(props) {
   const appearTab = (index) => {
     setStateTabs(index);
   };
+
+  function selectProduct() {
+    const tempTable = { id: Product.maininformation[0].id, selectedSize, selectedMaterial, selectedSupplies };
+    dispatch({ type: 'ADD_CART', item: tempTable });
+  }
 
   return (
     <section className="ps_mainSection">
@@ -35,15 +40,15 @@ function ProductDetails(props) {
             <strong>Difficulté : </strong>
           </p>
           <div>
-            <img className="ps_button" src="../src/images/button-3D.png" alt="bouton" />
+            <img className="ps_button" src="../src/img/button-3D.png" alt="bouton" />
             <img
               className={Product?.maininformation[0].difficulty === 'Moyenne' ? 'ps_button' : 'ps_button ps_button_inactive'}
-              src="../src/images/button-3D.png"
+              src="../src/img/button-3D.png"
               alt="bouton"
             />
             <img
               className={Product?.maininformation[0].difficulty === 'Difficile' ? 'ps_button' : 'ps_button ps_button_inactive'}
-              src="../src/images/button-3D.png"
+              src="../src/img/button-3D.png"
               alt="bouton"
             />
           </div>
@@ -145,6 +150,9 @@ function ProductDetails(props) {
           <option value="true">Oui</option>
           <option value="false">Non</option>
         </select>
+        <button className="ps_button" onClick={selectProduct}>
+          Ajouter aux panier
+        </button>
       </div>
     </section>
   );
