@@ -107,51 +107,53 @@ function ProductDetails(props) {
         </div>
       </div>
       <div className="ps_optionsSelect">
-        <p>
-          <strong>Votre taille:</strong>
-        </p>
-        <select
-          id="ps_sizeToSelect"
-          value={selectedSize}
-          onBlur={(item) => setSelectedSize(item.target.value)}
-          onChange={(item) => setSelectedSize(item.target.value)}>
-          <option defaultValue="unselect">Tailles disponibles</option>
-          {Product?.size.map((item, index) => (
-            <option key={index} value={item.size_letter}>
-              {item.size_letter.toUpperCase()}
-            </option>
-          ))}
-        </select>
-        <br />
-        <p>
-          <strong>Votre matière:</strong>
-        </p>
-        <select
-          id="ps_materialToSelect"
-          value={selectedMaterial}
-          onBlur={(item) => setSelectedMaterial(item.target.value)}
-          onChange={(item) => setSelectedMaterial(item.target.value)}>
-          <option defaultValue="unselect">Matières disponibles</option>
-          {Product?.materials.map((item, index) => (
-            <option key={index} value={item.material_type}>
-              {item.material_type}
-            </option>
-          ))}
-        </select>
-        <p>
-          <strong>Fournitures:</strong>
-        </p>
-        <select
-          id="ps_suppliesToSelect"
-          value={selectedSupplies}
-          onBlur={(item) => setSelectedSupplies(item.target.value)}
-          onChange={(item) => setSelectedSupplies(item.target.value)}>
-          <option defaultValue="unselect">Fournitures :</option>
-          <option value="true">Oui</option>
-          <option value="false">Non</option>
-        </select>
-        <button className="ps_button" onClick={selectProduct}>
-          Ajouter aux panier
+        <div className="ps_selector">
+          <p>
+            <strong>Votre taille:</strong>
+          </p>
+          <select
+            id="ps_sizeToSelect"
+            value={selectedSize}
+            onBlur={(item) => setSelectedSize(item.target.value)}
+            onChange={(item) => setSelectedSize(item.target.value)}>
+            <option defaultValue="unselect">Tailles disponibles</option>
+            {Product?.size.map((item, index) => (
+              <option key={index} value={item.size_letter}>
+                {item.size_letter.toUpperCase()}
+              </option>
+            ))}
+          </select>
+          <br />
+          <p>
+            <strong>Votre matière:</strong>
+          </p>
+          <select
+            id="ps_materialToSelect"
+            value={selectedMaterial}
+            onBlur={(item) => setSelectedMaterial(item.target.value)}
+            onChange={(item) => setSelectedMaterial(item.target.value)}>
+            <option defaultValue="unselect">Matières disponibles</option>
+            {Product?.materials.map((item, index) => (
+              <option key={index} value={item.material_type}>
+                {item.material_type}
+              </option>
+            ))}
+          </select>
+          <p>
+            <strong>Fournitures:</strong>
+          </p>
+          <select
+            id="ps_suppliesToSelect"
+            value={selectedSupplies}
+            onBlur={(item) => setSelectedSupplies(item.target.value)}
+            onChange={(item) => setSelectedSupplies(item.target.value)}>
+            <option defaultValue="unselect">Fournitures :</option>
+            <option value="true">Oui</option>
+            <option value="false">Non</option>
+          </select>
+        </div>
+        <button className="ps_cart_button" onClick={selectProduct}>
+          Ajouter au panier
         </button>
       </div>
     </section>
