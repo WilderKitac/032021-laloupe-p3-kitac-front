@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { useStateValue } from '../src/context/contextProvider';
 import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
 import ProductDetails from './components/ProductSheet/ProductDetails';
@@ -7,17 +8,16 @@ import ProductDetails from './components/ProductSheet/ProductDetails';
 import './App.css';
 
 function App() {
-  const [productInfo, setProductInfo] = useState();
+  const [{ prodDetail }, dispatch] = useStateValue();
 
   useEffect(() => {
     let id = 5;
     fetch(`http://localhost:8000/api/products/${id}/productsheet`)
       .then((resp) => resp.json())
       .then((data) => {
-        setProductInfo(data);
+        dispatch({ type: 'SET_PRODDETAIL', prodDetail: data });
       });
   }, []);
-  // console.log(productInfo);
 
   return (
     <main className="rsw-container">
@@ -27,7 +27,7 @@ function App() {
           <Footer />
         </Route>
         <Route path="/ProductSheet">
-          <ProductDetails productInfo={productInfo} />
+          <ProductDetails />
         </Route>
       </Switch>
     </main>
