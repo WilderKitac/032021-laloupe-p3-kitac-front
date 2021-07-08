@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './Footer.css';
 
 function Footer() {
@@ -8,7 +10,9 @@ function Footer() {
         <img className="logoFooter" alt="imageFooter" src="./src/img/KITAC_logo-07.png" />
       </div>
       <div className="footerText">
-        <p> Boutik </p>
+        <Link to="/ProductSheet">
+          <p> Boutik </p>
+        </Link>
         <p> Kitac et Vous</p>
         <p> La Gazette </p>
         <p> Kitac Kezako ? </p>

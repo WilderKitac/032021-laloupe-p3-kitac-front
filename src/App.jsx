@@ -23,8 +23,8 @@ function App() {
     <main className="rsw-container">
       <Switch>
         <Route exact path="/">
-        <Home />
-        <Footer />
+          <Home />
+          <Footer />
         </Route>
         <Route path="/ProductSheet">
           <ProductDetails productInfo={productInfo} />
