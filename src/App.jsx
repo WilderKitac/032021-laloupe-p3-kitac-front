@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
 import ProductDetails from './components/ProductSheet/ProductDetails';
 import Login from './components/Login/Login';
+import Kezako from './components/Kezako/Kezako';
 
 import './App.css';
 
@@ -15,7 +16,7 @@ function App() {
   const [{ user, jwt, role }, dispatch] = useStateValue();
 
   const refreshToken = () => {
-    console.log("ok");
+    console.log('ok');
     axios({
       method: 'POST',
       url: `${API_BASE_URL}/api/users/refresh_token`,
@@ -40,7 +41,7 @@ function App() {
       .catch((err) => {
         // console.log('error refresh: ', err.response.data);
         dispatch({ type: 'RESET_USER' });
-        dispatch({ type: 'RESET_JWT' });  
+        dispatch({ type: 'RESET_JWT' });
       });
   };
 
@@ -69,6 +70,9 @@ function App() {
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/Kezako">
+          <Kezako />
         </Route>
       </Switch>
     </main>
