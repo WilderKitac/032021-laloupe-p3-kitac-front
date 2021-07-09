@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 import ProductDetails from './components/ProductSheet/ProductDetails';
 import Login from './components/Login/Login';
 import Kezako from './components/Kezako/Kezako';
+import AdminPage from './components/Admin/AdminPage';
 
 import './App.css';
 
@@ -64,6 +65,9 @@ function App() {
         <Route exact path="/">
           <Home />
           <Footer />
+        </Route>
+        <Route path="/Admin">
+          <AdminPage />
         </Route>
         <Route path="/ProductSheet">
           <ProductDetails />
