@@ -1,31 +1,32 @@
 export const initialState = {
-  //   csrfToken: null,
-  //   user: null,
-  //   jwt: null,
+  user: null,
+  jwt: null,
+  role: null,
   cart: [],
+  prodDetail: null,
 };
 
 const reducer = (state, action) => {
   // console.log(action);
   switch (action.type) {
-    // case 'SET_USER': {
-    //   return { ...state, user: action.user };
-    // }
-    // case 'RESET_USER': {
-    //   return { ...state, user: null };
-    // }
-    // case 'SET_CSRF': {
-    //   return { ...state, csrfToken: action.csrf };
-    // }
-    // case 'RESET_CSRF': {
-    //   return { ...state, csrfToken: null };
-    // }
-    // case 'SET_JWT': {
-    //   return { ...state, jwt: action.jwt };
-    // }
-    // case 'RESET_JWT': {
-    //   return { ...state, jwt: null };
-    // }
+    case 'SET_USER': {
+      return { ...state, user: action.user };
+    }
+    case 'RESET_USER': {
+      return { ...state, user: null };
+    }
+    case 'SET_JWT': {
+      return { ...state, jwt: action.jwt };
+    }
+    case 'RESET_JWT': {
+      return { ...state, jwt: null };
+    }
+    case 'SET_ROLE': {
+      return { ...state, role: action.role };
+    }
+    case 'RESET_ROLE': {
+      return { ...state, role: null };
+    }
     case 'ADD_CART': {
       const cartToUpdate = [...state.cart];
       const itemIndex = cartToUpdate.findIndex((item) => {
@@ -42,6 +43,9 @@ const reducer = (state, action) => {
         cartToUpdate.push({ ...action.item, quantity: 1 });
       }
       return { ...state, cart: cartToUpdate };
+    }
+    case 'SET_PRODDETAIL': {
+      return { ...state, prodDetail: action.prodDetail };
     }
     default: {
       return state;

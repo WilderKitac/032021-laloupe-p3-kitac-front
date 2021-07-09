@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './Kezako.css';
 
 function Kezako() {
