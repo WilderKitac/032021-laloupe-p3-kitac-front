@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
 import ProductDetails from './components/ProductSheet/ProductDetails';
+import Kezako from './components/Kezako/Kezako';
 
 import './App.css';
 
@@ -23,11 +24,17 @@ function App() {
     <main className="rsw-container">
       <Switch>
         <Route exact path="/">
-        <Home />
-        <Footer />
+          <Home />
+          <Footer />
         </Route>
         <Route path="/ProductSheet">
           <ProductDetails productInfo={productInfo} />
+        </Route>
+      </Switch>
+      <Switch>
+        <Route exact path="/"></Route>
+        <Route path="/Kezako">
+          <Kezako />
         </Route>
       </Switch>
     </main>
