@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
 import ProductDetails from './components/ProductSheet/ProductDetails';
 import Login from './components/Login/Login';
+import Shop from './components/Shop/Shop';
 
 import './App.css';
 
@@ -32,7 +33,7 @@ function App() {
           console.log('inside setTimeout refresh token: ', 15 * 60 * 1000 - 5000);
           refreshToken();
         }, 15 * 60 * 1000 - 10000);
-        dispatch({ type: 'SET_USER', user });
+        dispatch({ type: 'SET_USER', user: id });
         dispatch({ type: 'SET_JWT', jwt: token });
         dispatch({ type: 'SET_ROLE', role: role });
         console.log('good');
@@ -63,6 +64,9 @@ function App() {
         <Route exact path="/">
           <Home />
           <Footer />
+        </Route>
+        <Route path="/shop">
+          <Shop />
         </Route>
         <Route path="/ProductSheet">
           <ProductDetails />
