@@ -34,7 +34,7 @@ function App() {
           console.log('inside setTimeout refresh token: ', 15 * 60 * 1000 - 5000);
           refreshToken();
         }, 15 * 60 * 1000 - 10000);
-        dispatch({ type: 'SET_USER', user });
+        dispatch({ type: 'SET_USER', user: id });
         dispatch({ type: 'SET_JWT', jwt: token });
         dispatch({ type: 'SET_ROLE', role: role });
         console.log('good');
