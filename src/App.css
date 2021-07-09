@@ -1,4 +1,13 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: 'Arapey', serif
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+  font-family: 'Old Standard TT', serif;
 }
