@@ -15,7 +15,7 @@ import './App.css';
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function App() {
-  const [{ user, jwt, role }, dispatch] = useStateValue();
+  const [{ user, jwt, role, prodId }, dispatch] = useStateValue();
 
   const refreshToken = () => {
     console.log('ok');
@@ -25,20 +25,15 @@ function App() {
       withCredentials: true,
     })
       .then(({ data }) => {
-        console.log(data);
         const { id, role, token } = data;
-        console.log(id, role, token);
-        console.log('before refresh token: ', 15 * 60 * 1000 - 5000);
 
         // setTimeout pour renouvler avant expiration l'access_token
         setTimeout(() => {
-          console.log('inside setTimeout refresh token: ', 15 * 60 * 1000 - 5000);
           refreshToken();
         }, 15 * 60 * 1000 - 10000);
         dispatch({ type: 'SET_USER', user: id });
         dispatch({ type: 'SET_JWT', jwt: token });
         dispatch({ type: 'SET_ROLE', role: role });
-        console.log('good');
       })
       .catch((err) => {
         // console.log('error refresh: ', err.response.data);
@@ -52,13 +47,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    let id = 5;
+    let id = prodId;
     fetch(`http://localhost:8000/api/products/${id}/productsheet`)
       .then((resp) => resp.json())
       .then((data) => {
         dispatch({ type: 'SET_PRODDETAIL', prodDetail: data });
       });
-  }, []);
+  }, [prodId]);
 
   return (
     <main className="rsw-container">

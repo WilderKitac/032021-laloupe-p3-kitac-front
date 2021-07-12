@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ShopCard from './ShopCard';
 import './Shop.css';
 
@@ -14,11 +15,18 @@ function Shop() {
       });
   }, []);
 
+  function pageHaut() {
+    window.scroll(0, 0);
+  }
+
   return (
-    <section>
-      {productList?.map((product, index) => (
-        <ShopCard key={product.info + index} {...product} />
-      ))}
+    <section className="shop">
+      <h1>Votre Boutique Kitac</h1>
+      <Link onClick={pageHaut} to="/ProductSheet" className="Sh_display">
+        {productList?.map((product, index) => (
+          <ShopCard key={product.name + `_` + index} {...product} />
+        ))}
+      </Link>
     </section>
   );
 }

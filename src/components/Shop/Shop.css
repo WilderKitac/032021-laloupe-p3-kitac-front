@@ -1,0 +1,9 @@
+.shop h1 {
+    text-align: center;
+}
+
+.Sh_display{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

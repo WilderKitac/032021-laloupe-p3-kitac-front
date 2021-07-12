@@ -43,7 +43,11 @@ function ProductDetails() {
           <div>
             <img className="ps_button" src="../src/img/button-3D.png" alt="bouton" />
             <img
-              className={prodDetail?.maininformation[0].difficulty === 'Moyenne' ? 'ps_button' : 'ps_button ps_button_inactive'}
+              className={
+                prodDetail?.maininformation[0].difficulty === 'Moyenne' || prodDetail?.maininformation[0].difficulty === 'Difficile'
+                  ? 'ps_button'
+                  : 'ps_button ps_button_inactive'
+              }
               src="../src/img/button-3D.png"
               alt="bouton"
             />
