@@ -5,7 +5,10 @@ import axios from 'axios';
 import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
 import ProductDetails from './components/ProductSheet/ProductDetails';
+import Kezako from './components/Kezako/Kezako';
 import Login from './components/Login/Login';
+import Kezako from './components/Kezako/Kezako';
+import AdminPage from './components/Admin/AdminPage';
 
 import './App.css';
 
@@ -32,7 +35,7 @@ function App() {
           console.log('inside setTimeout refresh token: ', 15 * 60 * 1000 - 5000);
           refreshToken();
         }, 15 * 60 * 1000 - 10000);
-        dispatch({ type: 'SET_USER', user });
+        dispatch({ type: 'SET_USER', user: id });
         dispatch({ type: 'SET_JWT', jwt: token });
         dispatch({ type: 'SET_ROLE', role: role });
         console.log('good');
@@ -68,11 +71,23 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
+        <Route path="/Admin">
+          <AdminPage />
+        </Route>
         <Route path="/ProductSheet">
           <ProductDetails />
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/Kezako">
+          <Kezako />
+        </Route>
+      </Switch>
+      <Switch>
+        <Route exact path="/"></Route>
+        <Route path="/Kezako">
+          <Kezako />
         </Route>
       </Switch>
       <Footer />
