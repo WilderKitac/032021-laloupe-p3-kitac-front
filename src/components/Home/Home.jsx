@@ -12,13 +12,10 @@ function Home() {
         setCategories(data);
       });
   }, []);
-  console.log(categories);
+  // console.log(categories);
 
   return (
     <div>
-      <section className="encadreHome">
-        <img className="logoHome" alt="imageHome" src="./src/img/KITAC_logo-01.png" />
-      </section>
       <section className="backroundHome">
         <section className="encadreTitre">
           <h1 className="titreHome">TITRE</h1>

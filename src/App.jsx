@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import { useStateValue } from '../src/context/contextProvider';
 import axios from 'axios';
 import Home from './components/Home/Home';
@@ -15,7 +15,7 @@ function App() {
   const [{ user, jwt, role }, dispatch] = useStateValue();
 
   const refreshToken = () => {
-    console.log("ok");
+    console.log('ok');
     axios({
       method: 'POST',
       url: `${API_BASE_URL}/api/users/refresh_token`,
@@ -40,7 +40,7 @@ function App() {
       .catch((err) => {
         // console.log('error refresh: ', err.response.data);
         dispatch({ type: 'RESET_USER' });
-        dispatch({ type: 'RESET_JWT' });  
+        dispatch({ type: 'RESET_JWT' });
       });
   };
 
@@ -59,10 +59,14 @@ function App() {
 
   return (
     <main className="rsw-container">
+      <nav className="navLogo">
+        <Link to="/" className="encadreHome">
+          <img className="logoHome" alt="imageHome" src="./src/img/KITAC_logo-03.png" />
+        </Link>
+      </nav>
       <Switch>
         <Route exact path="/">
           <Home />
-          <Footer />
         </Route>
         <Route path="/ProductSheet">
           <ProductDetails />
@@ -71,6 +75,7 @@ function App() {
           <Login />
         </Route>
       </Switch>
+      <Footer />
     </main>
   );
 }

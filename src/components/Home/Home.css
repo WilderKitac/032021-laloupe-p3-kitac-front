@@ -1,10 +1,5 @@
 .logoHome {
-  width: 15%;
-}
-
-.encadreHome {
-  display: flex;
-  justify-content: center;
+  width: 100%;
 }
 
 .titreHome,

@@ -12,3 +12,12 @@ h1 {
 h2 {
   font-family: 'Old Standard TT', serif;
 }
+
+ .navLogo {
+  display: flex;
+  justify-content: center;
+} 
+
+.encadreHome {
+ width: 20%;
+}
