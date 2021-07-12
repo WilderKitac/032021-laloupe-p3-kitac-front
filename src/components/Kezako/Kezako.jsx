@@ -5,7 +5,7 @@ function Kezako() {
   return (
     <section>
       <div>
-        <h1 className="text">About us!</h1>
+        <h1>About us!</h1>
         <h2>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus vel nemo at molestias eligendi deleniti ipsum, eos, omnis dolor labore
           praesentium quasi repellat aliquid dolore? Dolorum repellendus iste corrupti odit.

@@ -5,6 +5,7 @@ import axios from 'axios';
 import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
 import ProductDetails from './components/ProductSheet/ProductDetails';
+import Kezako from './components/Kezako/Kezako';
 import Login from './components/Login/Login';
 import Kezako from './components/Kezako/Kezako';
 import AdminPage from './components/Admin/AdminPage';
@@ -75,6 +76,12 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
+        <Route path="/Kezako">
+          <Kezako />
+        </Route>
+      </Switch>
+      <Switch>
+        <Route exact path="/"></Route>
         <Route path="/Kezako">
           <Kezako />
         </Route>
