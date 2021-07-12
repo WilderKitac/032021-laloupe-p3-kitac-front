@@ -2,6 +2,7 @@ export const initialState = {
   user: null,
   jwt: null,
   role: null,
+  prodId: null,
   cart: [],
   prodDetail: null,
 };
@@ -26,6 +27,9 @@ const reducer = (state, action) => {
     }
     case 'RESET_ROLE': {
       return { ...state, role: null };
+    }
+    case 'SET_PRODID': {
+      return { ...state, prodId: action.prodId };
     }
     case 'ADD_CART': {
       const cartToUpdate = [...state.cart];
