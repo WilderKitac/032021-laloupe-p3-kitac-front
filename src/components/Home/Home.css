@@ -22,3 +22,33 @@
   align-items: center;
   flex-direction: column;
 }
+
+.h_Texte {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.h_ImageHome {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.h_Bouton {
+  display: flex;
+  justify-content: center;
+  margin: 3%;
+}
+
+.h_EncadreCrea {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.h_imgCreatrice {
+  border-radius: 90%;
+  width: 25%;
+}
+
+.h_NewsLetter {
+  text-align: center;
+}
