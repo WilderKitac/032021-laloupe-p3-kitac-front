@@ -1,19 +1,9 @@
-.photo {
-  width: 60%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 250px;
+.text{
+    font-size: 30pt;
+    color: rgb(73, 34, 11);
 }
 
-h1{
-    font-size: 30px;
-    color: rgb(175, 59, 59);
-    text-align: center;
-}
-
-h2{
-    font-size:  25px;
-    color: rgb(80, 74, 74);
-    text-align: center;
+.photo{
+    width: 60%;
+    align-items: center;
 }

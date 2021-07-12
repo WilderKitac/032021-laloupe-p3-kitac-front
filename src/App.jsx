@@ -7,6 +7,8 @@ import Footer from './components/Footer/Footer';
 import ProductDetails from './components/ProductSheet/ProductDetails';
 import Kezako from './components/Kezako/Kezako';
 import Login from './components/Login/Login';
+import Kezako from './components/Kezako/Kezako';
+import AdminPage from './components/Admin/AdminPage';
 
 import './App.css';
 
@@ -16,7 +18,7 @@ function App() {
   const [{ user, jwt, role }, dispatch] = useStateValue();
 
   const refreshToken = () => {
-    console.log("ok");
+    console.log('ok');
     axios({
       method: 'POST',
       url: `${API_BASE_URL}/api/users/refresh_token`,
@@ -33,7 +35,7 @@ function App() {
           console.log('inside setTimeout refresh token: ', 15 * 60 * 1000 - 5000);
           refreshToken();
         }, 15 * 60 * 1000 - 10000);
-        dispatch({ type: 'SET_USER', user });
+        dispatch({ type: 'SET_USER', user: id });
         dispatch({ type: 'SET_JWT', jwt: token });
         dispatch({ type: 'SET_ROLE', role: role });
         console.log('good');
@@ -41,7 +43,7 @@ function App() {
       .catch((err) => {
         // console.log('error refresh: ', err.response.data);
         dispatch({ type: 'RESET_USER' });
-        dispatch({ type: 'RESET_JWT' });  
+        dispatch({ type: 'RESET_JWT' });
       });
   };
 
@@ -65,11 +67,17 @@ function App() {
           <Home />
           <Footer />
         </Route>
+        <Route path="/Admin">
+          <AdminPage />
+        </Route>
         <Route path="/ProductSheet">
           <ProductDetails />
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/Kezako">
+          <Kezako />
         </Route>
       </Switch>
       <Switch>

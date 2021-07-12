@@ -25,7 +25,7 @@ export default function Login({ refreshToken }) {
         .then(({ data }) => {
           dispatch({ type: 'SET_USER', user: data.user });
           dispatch({ type: 'SET_JWT', jwt: data.token });
-          dispatch({ type: 'SET_ROLE', jwt: data.role });
+          dispatch({ type: 'SET_ROLE', role: data.role });
           if (data.token !== undefined) {
             history.push('/');
           } else {
