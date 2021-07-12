@@ -1,0 +1,9 @@
+.text{
+    font-size: 30pt;
+    color: rgb(73, 34, 11);
+}
+
+.photo{
+    width: 60%;
+    align-items: center;
+}

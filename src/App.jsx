@@ -5,8 +5,10 @@ import axios from 'axios';
 import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
 import ProductDetails from './components/ProductSheet/ProductDetails';
+import Kezako from './components/Kezako/Kezako';
 import Login from './components/Login/Login';
 import Shop from './components/Shop/Shop';
+import AdminPage from './components/Admin/AdminPage';
 
 import './App.css';
 
@@ -16,7 +18,7 @@ function App() {
   const [{ user, jwt, role }, dispatch] = useStateValue();
 
   const refreshToken = () => {
-    console.log("ok");
+    console.log('ok');
     axios({
       method: 'POST',
       url: `${API_BASE_URL}/api/users/refresh_token`,
@@ -41,7 +43,7 @@ function App() {
       .catch((err) => {
         // console.log('error refresh: ', err.response.data);
         dispatch({ type: 'RESET_USER' });
-        dispatch({ type: 'RESET_JWT' });  
+        dispatch({ type: 'RESET_JWT' });
       });
   };
 
@@ -68,11 +70,20 @@ function App() {
         <Route path="/shop">
           <Shop />
         </Route>
+        <Route path="/Admin">
+          <AdminPage />
+        </Route>
         <Route path="/ProductSheet">
           <ProductDetails />
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/Kezako">
+          <Kezako />
+        </Route>
+        <Route path="/Kezako">
+          <Kezako />
         </Route>
       </Switch>
     </main>
