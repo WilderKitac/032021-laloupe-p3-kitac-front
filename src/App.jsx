@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import { useStateValue } from '../src/context/contextProvider';
 import axios from 'axios';
 import Home from './components/Home/Home';
@@ -62,10 +62,14 @@ function App() {
 
   return (
     <main className="rsw-container">
+      <nav className="navLogo">
+        <Link to="/" className="encadreHome">
+          <img className="logoHome" alt="imageHome" src="./src/img/KITAC_logo-03.png" />
+        </Link>
+      </nav>
       <Switch>
         <Route exact path="/">
           <Home />
-          <Footer />
         </Route>
         <Route path="/shop">
           <Shop />
@@ -86,6 +90,7 @@ function App() {
           <Kezako />
         </Route>
       </Switch>
+      <Footer />
     </main>
   );
 }
