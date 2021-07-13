@@ -4,6 +4,12 @@
   list-style: none;
   color: white;
   padding: 5% 0;
+  font-size: 0.8rem;
+}
+
+.FooterLink {
+  text-decoration: none;
+  color: white;
 }
 
 .logoFooter {
@@ -11,7 +17,7 @@
 }
 
 .logoNetwork {
-    width: 20%;
+    width: 60%;
 }
 
 .encadreLogo {
@@ -42,4 +48,8 @@
     display: flex;
     justify-content: space-between;
     margin-top: 5%;
+}
+
+.logoLink {
+  width: 33%;
 }
