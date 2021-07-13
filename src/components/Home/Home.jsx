@@ -30,13 +30,8 @@ function Home() {
           <Carousel showThumbs={false} infiniteLoop={true} autoPlay>
             {categories?.map((item) => (
               <>
-<<<<<<< HEAD
                 <img key={`image ${item.id}`} src={item.img_link} alt={item.img_alt} />
                 <a href={`/shop/${item.id}/${item.name}`} key={item.id} className="legend">
-=======
-                <img src={item.img_link} alt={item.img_alt} />
-                <a href="/shop" key={item.id} className="legend">
->>>>>>> dev
                   {item.name}
                 </a>
               </>
