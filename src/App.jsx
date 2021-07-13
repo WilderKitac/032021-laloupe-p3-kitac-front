@@ -18,7 +18,6 @@ function App() {
   const [{ user, jwt, role, prodId }, dispatch] = useStateValue();
 
   const refreshToken = () => {
-    console.log('ok');
     axios({
       method: 'POST',
       url: `${API_BASE_URL}/api/users/refresh_token`,
@@ -51,7 +50,8 @@ function App() {
     fetch(`http://localhost:8000/api/products/${id}/productsheet`)
       .then((resp) => resp.json())
       .then((data) => {
-        dispatch({ type: 'SET_PRODDETAIL', prodDetail: data });
+        let objProd = JSON.stringify(data);
+        localStorage.setItem('tempProd', objProd);
       });
   }, [prodId]);
 
