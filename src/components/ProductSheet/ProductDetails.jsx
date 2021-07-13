@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStateValue } from '../../context/contextProvider';
 import './ProductSheet.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -8,10 +8,19 @@ import { Carousel } from 'react-responsive-carousel';
 
 function ProductDetails() {
   const [stateTabs, setStateTabs] = useState(1);
-  const [{ prodDetail }, dispatch] = useStateValue();
+  const [{ cart }, dispatch] = useStateValue();
+  const [prodDetail, setProdDetail] = useState();
   const [selectedSize, setSelectedSize] = useState('Taille');
   const [selectedMaterial, setSelectedMaterial] = useState('Matière');
   const [selectedSupplies, setSelectedSupplies] = useState(false);
+
+  //cette fonction permet de récupérer les informations du local storage en décalant
+  useEffect(() => {
+    setTimeout(() => {
+      let item = localStorage.getItem('tempProd');
+      setProdDetail(JSON.parse(item));
+    }, 100);
+  }, []);
 
   const appearTab = (index) => {
     setStateTabs(index);
