@@ -3,21 +3,47 @@ import './Kezako.css';
 
 function Kezako() {
   return (
-    <section>
+    <section className="body">
       <div>
-        <h1>About us!</h1>
-        <h2>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus vel nemo at molestias eligendi deleniti ipsum, eos, omnis dolor labore
-          praesentium quasi repellat aliquid dolore? Dolorum repellendus iste corrupti odit.
-        </h2>
+        <img className="grandePhoto" src="https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg" alt="" />
+        <h3>Kitac Kezako</h3>
       </div>
       <div>
-        <h3>About us!</h3>
-        <img
-          className="photo"
-          src="https://scontent-cdt1-1.xx.fbcdn.net/v/t1.6435-9/206039359_108095841525585_7390601503102776035_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=973b4a&_nc_ohc=AlhBIRm8aZwAX_CFdnb&_nc_ht=scontent-cdt1-1.xx&oh=3f2bf365a472f24b132670ee76e9def1&oe=60EC850D"
-          alt="l'équipe"
-        />
+        <article>
+          <img className="photoKezako" src="https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg" alt="" />
+          <h3>Le concept</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus maxime facere consequatur iusto expedita blanditiis quaerat quibusdam
+            fugiat dolorem similique animi, repellendus eum ullam id tenetur dolores? Aperiam, libero blanditiis?
+          </p>
+        </article>
+
+        <article>
+          <img className="photoKezako" src="https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg" alt="" />
+          <h3>L'équipe</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus maxime facere consequatur iusto expedita blanditiis quaerat quibusdam
+            fugiat dolorem similique animi, repellendus eum ullam id tenetur dolores? Aperiam, libero blanditiis?
+          </p>
+        </article>
+
+        <article>
+          <img className="photoKezako" src="https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg" alt="" />
+          <h3>Contact</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus maxime facere consequatur iusto expedita blanditiis quaerat quibusdam
+            fugiat dolorem similique animi, repellendus eum ullam id tenetur dolores? Aperiam, libero blanditiis?
+          </p>
+        </article>
+
+        <article>
+          <img className="photoKezako" src="https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg" alt="" />
+          <h3>Collaborer avec Kitac</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus maxime facere consequatur iusto expedita blanditiis quaerat quibusdam
+            fugiat dolorem similique animi, repellendus eum ullam id tenetur dolores? Aperiam, libero blanditiis?
+          </p>
+        </article>
       </div>
     </section>
   );
