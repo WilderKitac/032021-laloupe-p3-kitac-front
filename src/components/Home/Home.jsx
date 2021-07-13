@@ -15,7 +15,7 @@ function Home() {
   // console.log(categories);
 
   return (
-    <section>
+    <section className="h_Main">
       <div className="backroundHome">
         <div className="encadreTitre">
           <h1 className="titreHome">TITRE</h1>
@@ -30,8 +30,8 @@ function Home() {
           <Carousel showThumbs={false} infiniteLoop={true} autoPlay>
             {categories?.map((item) => (
               <>
-                <img src={item.img_link} alt={item.img_alt} />
-                <a href="/shop" key={item.id} className="legend">
+                <img key={`image ${item.id}`} src={item.img_link} alt={item.img_alt} />
+                <a href={`/shop/${item.id}/${item.name}`} key={item.id} className="legend">
                   {item.name}
                 </a>
               </>
@@ -40,9 +40,9 @@ function Home() {
         </div>
       </div>
       <div className="h_Texte">
-        <h1>Apprendre a coudre avec Kitac</h1>
-        <h2>Un concept original</h2>
-        <p>
+        <h1 className="h_PartiTwo">Apprendre a coudre avec Kitac</h1>
+        <h2 className="h_PartiTwo">Un concept original</h2>
+        <p className="h_PartiTwo">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since
           the 1500s.
         </p>
@@ -54,7 +54,6 @@ function Home() {
       <div className="h_Bouton">
         <button className="ps_cart_button">Je me lance</button>
       </div>
-
       <div className="h_Texte">
         <h1>L'EQUIPE</h1>
         <h2>Sous-tire</h2>
@@ -64,8 +63,14 @@ function Home() {
         </p>
       </div>
       <div className="h_EncadreCrea">
-        <img className="h_imgCreatrice" alt="Angélique" src="./src/img/Angelique.png" />
-        <img className="h_imgCreatrice" alt="Valérie" src="./src/img/Valerie.png" />
+        <figure className="h_figure">
+          <img className="h_imgCreatrice" alt="Angélique" src="./src/img/Angelique.png" />
+          <figcaption>Angélique</figcaption>
+        </figure>
+        <figure className="h_figure">
+          <img className="h_imgCreatrice" alt="Valérie" src="./src/img/Valerie.png" />
+          <figcaption>Valérie</figcaption>
+        </figure>
       </div>
       <div className="h_Bouton">
         <button className="ps_cart_button">Faisons connaissance</button>
