@@ -31,7 +31,7 @@ function Home() {
             {categories?.map((item) => (
               <>
                 <img src={item.img_link} alt={item.img_alt} />
-                <a href="/ProductSheet" key={item.id} className="legend">
+                <a href="/shop" key={item.id} className="legend">
                   {item.name}
                 </a>
               </>
