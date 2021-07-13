@@ -7,3 +7,8 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.sh_Title {
+    text-align: center;
+    margin-top: 5%;
+}

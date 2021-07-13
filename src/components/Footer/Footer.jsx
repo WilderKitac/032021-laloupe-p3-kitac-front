@@ -5,17 +5,19 @@ import './Footer.css';
 
 function Footer() {
   return (
-    <div className="footer">
+    <section className="footer">
       <div className="encadreLogo">
-        <img className="logoFooter" alt="imageFooter" src="./src/img/KITAC_logo-07.png" />
+        <img className="logoFooter" alt="imageFooter" src="/src/img/KITAC_logo-07.png" />
       </div>
       <div className="footerText">
-        <Link to="/ProductSheet">
-          <p> Boutik </p>
+        <Link className="FooterLink" to="/ProductSheet">
+          Boutik
         </Link>
         <p> Kitac et Vous</p>
         <p> La Gazette </p>
-        <p> Kitac Kezako ? </p>
+        <Link className="FooterLink" to="/Kezako">
+          <p> Kitac Kezako ? </p>
+        </Link>
       </div>
       <div className="footerText">
         <p> CGV </p>
@@ -27,12 +29,18 @@ function Footer() {
         <p> Rejoindre l'équipe </p>
         <p> Inscription Newsletter</p>
         <div className="networkLogo">
-          <img className="logoNetwork" alt="imageFooter" src="./src/img/Facebook.png" />
-          <img className="logoNetwork" alt="imageFooter" src="./src/img/Insta.png" />
-          <img className="logoNetwork" alt="imageFooter" src="./src/img/pinterest.svg" />
+          <a className="logoLink" href=" https://www.facebook.com/KITAC-Couture-108078098194026" target="_blank">
+            <img className="logoNetwork" alt="imageFooter" src="/src/img/Facebook.png" />
+          </a>
+          <a className="logoLink" href="https://www.instagram.com/kitac_couture/?hl=fr" target="_blank">
+            <img className="logoNetwork" alt="imageFooter" src="/src/img/Insta.png" />
+          </a>
+          <a className="logoLink" href="https://www.pinterest.fr/" target="_blank">
+            <img className="logoNetwork" alt="imageFooter" src="/src/img/pinterest.svg" />
+          </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
