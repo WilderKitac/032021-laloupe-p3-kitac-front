@@ -8,12 +8,13 @@ import { Carousel } from 'react-responsive-carousel';
 
 function ProductDetails() {
   const [stateTabs, setStateTabs] = useState(1);
-  const [{}, dispatch] = useStateValue();
+  const [{ cart }, dispatch] = useStateValue();
   const [prodDetail, setProdDetail] = useState();
   const [selectedSize, setSelectedSize] = useState('Taille');
   const [selectedMaterial, setSelectedMaterial] = useState('Matière');
   const [selectedSupplies, setSelectedSupplies] = useState(false);
 
+  //cette fonction permet de récupérer les informations du local storage en décalant
   useEffect(() => {
     setTimeout(() => {
       let item = localStorage.getItem('tempProd');

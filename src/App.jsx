@@ -50,7 +50,6 @@ function App() {
     fetch(`http://localhost:8000/api/products/${id}/productsheet`)
       .then((resp) => resp.json())
       .then((data) => {
-        // dispatch({ type: 'SET_PRODDETAIL', prodDetail: data });
         let objProd = JSON.stringify(data);
         localStorage.setItem('tempProd', objProd);
       });
