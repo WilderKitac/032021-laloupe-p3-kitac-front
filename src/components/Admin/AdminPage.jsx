@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import AdminUser from './AdminUser';
+import Material from './CreateMaterial';
 
 export default function AdminPage() {
   const { path } = useRouteMatch();
@@ -11,6 +12,9 @@ export default function AdminPage() {
       <Switch>
         <Route path={`${path}/users`}>
           <AdminUser />
+        </Route>
+        <Route path={`${path}/Material`}>
+          <Material />
         </Route>
       </Switch>
     </div>
