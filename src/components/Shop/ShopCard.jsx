@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { useStateValue } from '../../context/contextProvider';
-import { Link } from 'react-router-dom';
 import './ShopCard.css';
 
 function ShopCard(props) {

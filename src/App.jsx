@@ -81,9 +81,6 @@ function App() {
         <Route path="/Kezako">
           <Kezako />
         </Route>
-        <Route path="/Kezako">
-          <Kezako />
-        </Route>
       </Switch>
       <Footer />
     </main>
