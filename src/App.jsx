@@ -59,14 +59,14 @@ function App() {
     <main className="rsw-container">
       <nav className="navLogo">
         <Link to="/" className="encadreHome">
-          <img className="logoHome" alt="imageHome" src="./src/img/KITAC_logo-03.png" />
+          <img className="logoHome" alt="imageHome" src="/src/img/KITAC_logo-03.png" />
         </Link>
       </nav>
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/shop">
+        <Route path={['/shop/:id/:name', '/shop/:id']}>
           <Shop />
         </Route>
         <Route path="/Admin">
@@ -77,9 +77,6 @@ function App() {
         </Route>
         <Route path="/login">
           <Login />
-        </Route>
-        <Route path="/Kezako">
-          <Kezako />
         </Route>
         <Route path="/Kezako">
           <Kezako />
