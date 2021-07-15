@@ -30,7 +30,7 @@ function Shop() {
   return (
     <section className="shop">
       <h1>Votre Boutique Kitac</h1>
-      <h2 className="sh_Title">{id !== '0' ? name : 'NON'}</h2>
+      <h2 className="sh_Title">{id !== '0' ? name : 'Toutes les boutiques'}</h2>
       <Link onClick={pageHaut} to="/ProductSheet" className="Sh_display">
         {productList?.map((product, index) => (
           <ShopCard key={product.name + `_` + index} {...product} />
