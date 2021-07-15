@@ -22,7 +22,7 @@ function Footer() {
       <div className="footerText">
         <p> CGV </p>
         <p> Mention Légales </p>
-        <p> Paiment & livraison </p>
+        <p> Paiement & livraison </p>
         <p> FAQ </p>
       </div>
       <div className="footerNetwork">

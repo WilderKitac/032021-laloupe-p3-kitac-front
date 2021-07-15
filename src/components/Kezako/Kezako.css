@@ -1,5 +1,11 @@
-.photoKezako {
+.container {
   display: flex;
+  flex: auto;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.photoKezako {
   margin-top: 1em;
   padding: 1em;
   border-radius: 5px;
@@ -28,7 +34,7 @@
   margin: 3em;
 }
 
-.container{
-  display: flex;
-  flex: auto;
+.zoom:hover {
+  transition: transform 0.9s;
+  transform: scale(1.3);
 }

@@ -4,8 +4,17 @@ import './Kezako.css';
 function Kezako() {
   return (
     <section className="body">
-      <div>
-        <img className="grandePhoto" src="https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg" alt="" />
+      <div className="zoom">
+        <li>
+          <a href="http://localhost:3000/shop">
+            <img
+              className="grandePhoto"
+              src="https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg"
+              alt="photo"
+              onClick="http://localhost:3000/shop"
+            />
+          </a>
+        </li>
         <h3 className="text">Kitac Kezako</h3>
       </div>
       <div className="container">

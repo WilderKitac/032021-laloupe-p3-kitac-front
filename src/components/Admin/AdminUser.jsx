@@ -26,7 +26,6 @@ export default function AdminUser() {
     }
   }, [jwt]);
 
-
   return (
     <div>
       <h2>Gestion des utilisateurs</h2>
