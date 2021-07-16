@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Formik, Form, Field, useField, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
+import './AdminUserCreate.css';
 
 const UserValidation = object().shape({
   firstname: string().required('Le prénom est requis'),
@@ -72,7 +73,7 @@ export default function AdminUserCreate() {
       {() => {
         return (
           <Form>
-            <div>
+            <div className="text">
               <div>
                 <label htmlFor="firstname">
                   Prénom:
