@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import AdminUser from './AdminUser';
 import Material from './CreateMaterial';
+import Product from './ManageProducts';
 
 export default function AdminPage() {
   const { path } = useRouteMatch();
@@ -15,6 +16,9 @@ export default function AdminPage() {
         </Route>
         <Route path={`${path}/Material`}>
           <Material />
+        </Route>
+        <Route path={`${path}/Product`}>
+          <Product />
         </Route>
       </Switch>
     </div>
