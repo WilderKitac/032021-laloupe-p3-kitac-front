@@ -16,6 +16,10 @@ function ManageProducts() {
   const [suppliesList, setSuppliesList] = useState(null);
   const [categoryList, setCategoryList] = useState(null);
   const [catArray, setCatArray] = useState([]);
+  const [materialList, setMaterialList] = useState(null);
+  const [materialArray, setMaterialArray] = useState([]);
+  const [prodID, setProdID] = useState(null);
+  const [prodImgs, setProdImgs] = useState([]);
 
   const onChangeFile = (event) => {
     const { type } = event.target.files[0];
@@ -38,6 +42,7 @@ function ManageProducts() {
       pieces: prodPieces,
       supplies_id: prodSupply,
       category_ids: catArray,
+      materials_ids: materialArray,
     };
     axios({
       method: 'POST',
@@ -45,7 +50,8 @@ function ManageProducts() {
       data: data,
     })
       .then((data) => data.data)
-      .then(() => {
+      .then((data) => {
+        setProdID(data);
         alert('Produit créé avec succès');
       })
       .catch((err) => {
@@ -64,6 +70,17 @@ function ManageProducts() {
     setCatArray(tempCatArray);
   };
 
+  //fonction pour récupération de(s) matière(s) : à optimiser car identique à attachCat
+  const attachMaterial = (e) => {
+    const tempmaterialArray = [...materialArray];
+    if (e.target.checked === true) {
+      tempmaterialArray.push(e.target.id);
+    } else {
+      tempmaterialArray.splice(tempmaterialArray.indexOf(e.target.id), 1);
+    }
+    setMaterialArray(tempmaterialArray);
+  };
+
   //fonction pour soumission multiples images
   const submitFiles = (e) => {
     e.preventDefault();
@@ -78,6 +95,32 @@ function ManageProducts() {
         data: data,
       })
         .then((data) => data.data)
+        .then((data) => {
+          console.log('1');
+          const rebuiltProdImg = [];
+          data.forEach((item) => {
+            rebuiltProdImg.push([prodID, item.id]);
+          });
+          setProdImgs(rebuiltProdImg);
+          alert('Images chargées');
+          console.log('2');
+        })
+        //a partir d'ici souci de synchro entre axios et récup du state prodImgs
+        .then(
+          axios({
+            method: 'POST',
+            url: `${API_BASE_URL}/api/represents/prodImgs`,
+            data: prodImgs,
+          })
+            .then((data) => data.data)
+            .then((data) => {
+              console.log('3');
+              alert(data);
+            })
+            .catch((err) => {
+              alert(err.message);
+            }),
+        )
         .catch((err) => {
           alert(err.message);
         });
@@ -98,6 +141,15 @@ function ManageProducts() {
       .then((resp) => resp.json())
       .then((data) => {
         setCategoryList(data);
+      });
+  }, []);
+
+  //récupération des données matières
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/api/materials`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        setMaterialList(data);
       });
   }, []);
 
@@ -169,6 +221,15 @@ function ManageProducts() {
               <div key={index}>
                 <input type="checkbox" id={item.id} name={item.name} onChange={attachCat}></input>
                 <label htmlFor={item.name}>{item.name}</label>
+              </div>
+            ))}
+          </div>
+          <div>
+            <h4>Matière(s) :</h4>
+            {materialList?.map((item, index) => (
+              <div key={index}>
+                <input type="checkbox" id={item.id} name={item.material_type} onChange={attachMaterial}></input>
+                <label htmlFor={item.material_type}>{item.material_type}</label>
               </div>
             ))}
           </div>
