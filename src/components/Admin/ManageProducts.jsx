@@ -19,7 +19,9 @@ function ManageProducts() {
   const [materialList, setMaterialList] = useState(null);
   const [materialArray, setMaterialArray] = useState([]);
   const [prodID, setProdID] = useState(null);
-  const [prodImgs, setProdImgs] = useState([]);
+  const [prodList, setProdList] = useState(null);
+  const [prodToDelete, setProdToDelete] = useState('');
+  const [idToDelete, setIdToDelete] = useState(null);
 
   const onChangeFile = (event) => {
     const { type } = event.target.files[0];
@@ -96,17 +98,14 @@ function ManageProducts() {
       })
         .then((data) => data.data)
         .then((data) => {
-          console.log('1');
           const rebuiltProdImg = [];
           data.forEach((item) => {
             rebuiltProdImg.push([prodID, item.id]);
           });
-          setProdImgs(rebuiltProdImg);
-          alert('Images chargées');
-          console.log('2');
+          return rebuiltProdImg;
         })
         //a partir d'ici souci de synchro entre axios et récup du state prodImgs
-        .then(
+        .then((prodImgs) => {
           axios({
             method: 'POST',
             url: `${API_BASE_URL}/api/represents/prodImgs`,
@@ -114,13 +113,12 @@ function ManageProducts() {
           })
             .then((data) => data.data)
             .then((data) => {
-              console.log('3');
               alert(data);
             })
             .catch((err) => {
               alert(err.message);
-            }),
-        )
+            });
+        })
         .catch((err) => {
           alert(err.message);
         });
@@ -153,13 +151,38 @@ function ManageProducts() {
       });
   }, []);
 
+  //récupération des données produits
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/api/products/simple`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        setProdList(data);
+      });
+  }, []);
+  console.log(prodList);
+
+  const deleteMat = (e) => {
+    let id = idToDelete;
+    e.preventDefault();
+    axios({
+      method: 'DELETE',
+      url: `${API_BASE_URL}/api/products/${id}`,
+    })
+      .then(() => {
+        alert('Matière supprimée avec succès');
+      })
+      .catch(() => {
+        alert('La suppression a échoué');
+      });
+  };
+
   return (
     <section className="prod_admin">
       <h1>Gestion des Produits</h1>
       <div className="prod_div">
         <h2>Création</h2>
         <h3>Informations produit</h3>
-        <form className="mat_form" onSubmit={submitData}>
+        <form className="prod_form" onSubmit={submitData}>
           <label>
             Nom du produit:
             <input type="text" className="mat_input" value={prodName} onChange={(e) => setProdName(e.target.value)} />
@@ -246,6 +269,46 @@ function ManageProducts() {
             Charger les fichiers
           </button>
           {/* {file && <img src={`${API_BASE_URL}/image/${file.filename}`} alt="fichier chargé" />} */}
+        </form>
+      </div>
+      <div className="prod_div">
+        <h2>Suppression</h2>
+        <form className="prod_form" onSubmit={deleteMat}>
+          <label>
+            Saisissez le nom du produit à effacer
+            <input type="text" placeholder="Nom du produit" value={prodToDelete} onChange={(item) => setProdToDelete(item.target.value)} />
+          </label>
+          {prodToDelete && (
+            <table>
+              <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {prodList
+                  ?.filter((prod) => prod.name.startsWith(prodToDelete))
+                  .map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.name}</td>
+                      <td>{item.description}</td>
+                      <td>
+                        <button
+                          className="prod_button"
+                          type="submit"
+                          onClick={() => {
+                            setProdToDelete(item.name);
+                            setIdToDelete(item.id);
+                          }}>
+                          Effacer
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          )}
         </form>
       </div>
     </section>
