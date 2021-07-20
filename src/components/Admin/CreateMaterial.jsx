@@ -110,10 +110,10 @@ function CreateMaterial() {
         url: `${API_BASE_URL}/api/materials/${id}`,
         data,
       })
-        .then((data) => {
+        .then(() => {
           alert('Matière mise à jour avec succès');
         })
-        .catch((err) => {
+        .catch(() => {
           alert('La mise à jour a échoué');
         });
     }
@@ -126,10 +126,10 @@ function CreateMaterial() {
       method: 'DELETE',
       url: `${API_BASE_URL}/api/materials/${id}`,
     })
-      .then((data) => {
+      .then(() => {
         alert('Matière supprimée avec succès');
       })
-      .catch((err) => {
+      .catch(() => {
         alert('La suppression a échoué');
       });
   };

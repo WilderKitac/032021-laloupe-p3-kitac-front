@@ -16,6 +16,12 @@ function ManageProducts() {
   const [suppliesList, setSuppliesList] = useState(null);
   const [categoryList, setCategoryList] = useState(null);
   const [catArray, setCatArray] = useState([]);
+  const [materialList, setMaterialList] = useState(null);
+  const [materialArray, setMaterialArray] = useState([]);
+  const [prodID, setProdID] = useState(null);
+  const [prodList, setProdList] = useState(null);
+  const [prodToDelete, setProdToDelete] = useState('');
+  const [idToDelete, setIdToDelete] = useState(null);
 
   const onChangeFile = (event) => {
     const { type } = event.target.files[0];
@@ -38,6 +44,7 @@ function ManageProducts() {
       pieces: prodPieces,
       supplies_id: prodSupply,
       category_ids: catArray,
+      materials_ids: materialArray,
     };
     axios({
       method: 'POST',
@@ -45,7 +52,8 @@ function ManageProducts() {
       data: data,
     })
       .then((data) => data.data)
-      .then(() => {
+      .then((data) => {
+        setProdID(data);
         alert('Produit créé avec succès');
       })
       .catch((err) => {
@@ -64,6 +72,17 @@ function ManageProducts() {
     setCatArray(tempCatArray);
   };
 
+  //fonction pour récupération de(s) matière(s) : à optimiser car identique à attachCat
+  const attachMaterial = (e) => {
+    const tempmaterialArray = [...materialArray];
+    if (e.target.checked === true) {
+      tempmaterialArray.push(e.target.id);
+    } else {
+      tempmaterialArray.splice(tempmaterialArray.indexOf(e.target.id), 1);
+    }
+    setMaterialArray(tempmaterialArray);
+  };
+
   //fonction pour soumission multiples images
   const submitFiles = (e) => {
     e.preventDefault();
@@ -78,6 +97,28 @@ function ManageProducts() {
         data: data,
       })
         .then((data) => data.data)
+        .then((data) => {
+          const rebuiltProdImg = [];
+          data.forEach((item) => {
+            rebuiltProdImg.push([prodID, item.id]);
+          });
+          return rebuiltProdImg;
+        })
+        //a partir d'ici souci de synchro entre axios et récup du state prodImgs
+        .then((prodImgs) => {
+          axios({
+            method: 'POST',
+            url: `${API_BASE_URL}/api/represents/prodImgs`,
+            data: prodImgs,
+          })
+            .then((data) => data.data)
+            .then((data) => {
+              alert(data);
+            })
+            .catch((err) => {
+              alert(err.message);
+            });
+        })
         .catch((err) => {
           alert(err.message);
         });
@@ -101,13 +142,47 @@ function ManageProducts() {
       });
   }, []);
 
+  //récupération des données matières
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/api/materials`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        setMaterialList(data);
+      });
+  }, []);
+
+  //récupération des données produits
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/api/products/simple`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        setProdList(data);
+      });
+  }, []);
+  console.log(prodList);
+
+  const deleteMat = (e) => {
+    let id = idToDelete;
+    e.preventDefault();
+    axios({
+      method: 'DELETE',
+      url: `${API_BASE_URL}/api/products/${id}`,
+    })
+      .then(() => {
+        alert('Matière supprimée avec succès');
+      })
+      .catch(() => {
+        alert('La suppression a échoué');
+      });
+  };
+
   return (
     <section className="prod_admin">
       <h1>Gestion des Produits</h1>
       <div className="prod_div">
         <h2>Création</h2>
         <h3>Informations produit</h3>
-        <form className="mat_form" onSubmit={submitData}>
+        <form className="prod_form" onSubmit={submitData}>
           <label>
             Nom du produit:
             <input type="text" className="mat_input" value={prodName} onChange={(e) => setProdName(e.target.value)} />
@@ -172,6 +247,15 @@ function ManageProducts() {
               </div>
             ))}
           </div>
+          <div>
+            <h4>Matière(s) :</h4>
+            {materialList?.map((item, index) => (
+              <div key={index}>
+                <input type="checkbox" id={item.id} name={item.material_type} onChange={attachMaterial}></input>
+                <label htmlFor={item.material_type}>{item.material_type}</label>
+              </div>
+            ))}
+          </div>
           <button className="prod_button" type="submit">
             Enregistrer le produit
           </button>
@@ -185,6 +269,46 @@ function ManageProducts() {
             Charger les fichiers
           </button>
           {/* {file && <img src={`${API_BASE_URL}/image/${file.filename}`} alt="fichier chargé" />} */}
+        </form>
+      </div>
+      <div className="prod_div">
+        <h2>Suppression</h2>
+        <form className="prod_form" onSubmit={deleteMat}>
+          <label>
+            Saisissez le nom du produit à effacer
+            <input type="text" placeholder="Nom du produit" value={prodToDelete} onChange={(item) => setProdToDelete(item.target.value)} />
+          </label>
+          {prodToDelete && (
+            <table>
+              <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {prodList
+                  ?.filter((prod) => prod.name.startsWith(prodToDelete))
+                  .map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.name}</td>
+                      <td>{item.description}</td>
+                      <td>
+                        <button
+                          className="prod_button"
+                          type="submit"
+                          onClick={() => {
+                            setProdToDelete(item.name);
+                            setIdToDelete(item.id);
+                          }}>
+                          Effacer
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          )}
         </form>
       </div>
     </section>
