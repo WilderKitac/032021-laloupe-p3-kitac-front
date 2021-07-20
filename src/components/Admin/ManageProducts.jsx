@@ -46,6 +46,9 @@ function ManageProducts() {
       category_ids: catArray,
       materials_ids: materialArray,
     };
+    if (!data.supplies_id) {
+      delete data.supplies_id;
+    }
     axios({
       method: 'POST',
       url: `${API_BASE_URL}/api/products`,
@@ -96,15 +99,19 @@ function ManageProducts() {
         url: `${API_BASE_URL}/api/productsimages/multer`,
         data: data,
       })
-        .then((data) => data.data)
+        .then((data) => [data.data])
         .then((data) => {
           const rebuiltProdImg = [];
-          data.forEach((item) => {
-            rebuiltProdImg.push([prodID, item.id]);
-          });
+          //data.data mis dans un tableau afin de pouvoir parcourir et pusher les données
+          if (data[0].length === 1) {
+            rebuiltProdImg.push([prodID, data[0].id]);
+          } else {
+            data[0].forEach((item) => {
+              rebuiltProdImg.push([prodID, item.id]);
+            });
+          }
           return rebuiltProdImg;
         })
-        //a partir d'ici souci de synchro entre axios et récup du state prodImgs
         .then((prodImgs) => {
           axios({
             method: 'POST',
@@ -159,7 +166,6 @@ function ManageProducts() {
         setProdList(data);
       });
   }, []);
-  console.log(prodList);
 
   const deleteMat = (e) => {
     let id = idToDelete;
@@ -169,7 +175,9 @@ function ManageProducts() {
       url: `${API_BASE_URL}/api/products/${id}`,
     })
       .then(() => {
-        alert('Matière supprimée avec succès');
+        //ceci permet de recharger la pagse à chaque suppression
+        window.location.reload();
+        alert('Produit supprimé avec succès');
       })
       .catch(() => {
         alert('La suppression a échoué');
@@ -222,15 +230,15 @@ function ManageProducts() {
               id="prod_supplyToSelect"
               onBlur={(item) => {
                 item.target.value === 'Aucune'
-                  ? setProdSupply(0)
+                  ? setProdSupply('')
                   : setProdSupply(suppliesList?.filter((suppl) => suppl.title.includes(item.target.value))[0].id);
               }}
               onChange={(item) => {
                 item.target.value === 'Aucune'
-                  ? setProdSupply(0)
+                  ? setProdSupply('')
                   : setProdSupply(suppliesList?.filter((suppl) => suppl.title.includes(item.target.value))[0].id);
               }}>
-              <option defaultValue="unselect">Aucune</option>
+              <option defaultValue="Aucune">Aucune</option>
               {suppliesList?.map((item, index) => (
                 <option key={index} value={item.title}>
                   {item.title}
@@ -266,7 +274,7 @@ function ManageProducts() {
             <input type="file" accept="image/*" onChange={onChangeFile} multiple />
           </label>
           <button className="prod_button" type="submit">
-            Charger les fichiers
+            Charger et associer les fichiers
           </button>
           {/* {file && <img src={`${API_BASE_URL}/image/${file.filename}`} alt="fichier chargé" />} */}
         </form>
@@ -298,7 +306,6 @@ function ManageProducts() {
                           className="prod_button"
                           type="submit"
                           onClick={() => {
-                            setProdToDelete(item.name);
                             setIdToDelete(item.id);
                           }}>
                           Effacer
