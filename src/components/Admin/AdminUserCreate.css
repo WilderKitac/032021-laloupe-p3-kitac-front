@@ -1,4 +1,8 @@
-.text{
-    font-size: 2em;
-    font-style: inherit;
+.text {
+  font-size: 2em;
+  font-style: inherit;
+}
+
+.field {
+  background-color: rgb(211, 204, 204);
 }
