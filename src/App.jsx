@@ -9,6 +9,7 @@ import Kezako from './components/Kezako/Kezako';
 import Login from './components/Login/Login';
 import Shop from './components/Shop/Shop';
 import AdminPage from './components/Admin/AdminPage';
+import Contact from './components/Kezako/Contact';
 
 import './App.css';
 
@@ -50,7 +51,6 @@ function App() {
     fetch(`http://localhost:8000/api/products/${id}/productsheet`)
       .then((resp) => resp.json())
       .then((data) => {
-        let objProd = JSON.stringify(data);
         localStorage.setItem('tempProd', objProd);
       });
   }, [prodId]);
@@ -80,6 +80,9 @@ function App() {
         </Route>
         <Route path="/Kezako">
           <Kezako />
+        </Route>
+        <Route path="/Contact">
+          <Contact />
         </Route>
       </Switch>
       <Footer />

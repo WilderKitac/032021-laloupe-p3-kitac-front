@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex: auto;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .photoKezako {
+    margin-top: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px grey;
+    max-width: 60%;
+    height: auto;
+    margin: 3em;
+  }
+  
+  .body {
+    max-width: 1024px;
+    margin: 20px auto;
+    position: relative;
+  }
+  
+  .grandePhoto {
+    max-width: 90%;
+    display: block;
+    margin: auto;
+  }
+  
+  .text {
+    margin: 0, 5em;
+    font-size: 10pt;
+    color: rgb(73, 34, 11);
+    margin: 3em;
+  }
+  
+  .zoom:hover {
+    transition: transform 0.9s;
+    transform: scale(1.1);
+  }
+  
