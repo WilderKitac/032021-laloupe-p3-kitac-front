@@ -6,6 +6,8 @@ import './ProductSheet.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 function ProductDetails() {
   const [stateTabs, setStateTabs] = useState(1);
   const [{ cart }, dispatch] = useStateValue();
@@ -80,7 +82,7 @@ function ProductDetails() {
         <div className="ps_materials">
           {prodDetail?.materials.map((material) => (
             <figure key={material.id}>
-              <img className="ps_material_image" src={material.image} alt={material.material_type}></img>
+              <img className="ps_material_image" src={`${API_BASE_URL}/image/${material.image}`} alt={material.material_type}></img>
               <p key={material.id}>{material.material_type}</p>
             </figure>
           ))}
