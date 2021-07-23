@@ -27,7 +27,7 @@ function Home() {
         </div>
         <div className="encadreShop">
           <h1 className="titleShop">LA BOUTIK A KITS</h1>
-          <Carousel showThumbs={false} infiniteLoop={true} autoPlay>
+          <Carousel showThumbs={false} infiniteLoop={true} showStatus={false} autoPlay>
             {categories?.map((item) => (
               <>
                 <img key={`image ${item.id}`} src={item.img_link} alt={item.img_alt} />
@@ -38,6 +38,9 @@ function Home() {
             ))}
           </Carousel>
         </div>
+      </div>
+      <div className="h_separe">
+      <hr></hr>
       </div>
       <div className="h_Texte">
         <h1 className="h_PartiTwo">Apprendre a coudre avec Kitac</h1>
@@ -52,7 +55,10 @@ function Home() {
         <img alt="imageHome2" src="https://picsum.photos/150/100" />
       </div>
       <div className="h_Bouton">
-        <button className="ps_cart_button">Je me lance</button>
+        <button className="h_cart_button">Je me lance</button>
+      </div>
+      <div className="h_separe">
+      <hr></hr>
       </div>
       <div className="h_Texte">
         <h1>L'EQUIPE</h1>
@@ -73,11 +79,7 @@ function Home() {
         </figure>
       </div>
       <div className="h_Bouton">
-        <button className="ps_cart_button">Faisons connaissance</button>
-      </div>
-      <div className="h_NewsLetter">
-        <p>Restez informés des nouveautés en aveant-première.</p>
-        <p>Promis, On va pas vous spammer !</p>
+        <button className="h_cart_button">Faisons connaissance</button>
       </div>
     </section>
   );

@@ -59,7 +59,7 @@ function App() {
     <main className="rsw-container">
       <nav className="navLogo">
         <Link to="/" className="encadreHome">
-          <img className="logoHome" alt="imageHome" src="/src/img/KITAC_logo-03.png" />
+          <img className="logoHome" alt="imageHome" src="/src/img/KITAC_logo-07.png" />
         </Link>
       </nav>
       <Switch>
