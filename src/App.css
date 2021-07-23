@@ -17,6 +17,7 @@ h2 {
  .navLogo {
   display: flex;
   justify-content: center;
+  background-color: rgb(13, 54, 72); 
 } 
 
 .encadreHome {

@@ -1,7 +1,7 @@
-/* .h_Main {
-  background-color: lightgray;
-} */
-
+.rsw-container{
+  background: rgb(237,227,216);
+  background: linear-gradient(180deg, rgba(237,227,216,1) 15%, rgba(252,247,240,1) 80%);
+}
 .logoHome {
   width: 100%;
 }
@@ -90,7 +90,7 @@
 hr {
   margin-top: 5%;
   width: 90%;
-  color: #2b665e;
+  color: black;
 }
 
 .h_separe {
