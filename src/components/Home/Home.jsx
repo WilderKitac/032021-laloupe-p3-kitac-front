@@ -27,7 +27,7 @@ function Home() {
         </div>
         <div className="encadreShop">
           <h1 className="titleShop">LA BOUTIK A KITS</h1>
-          <Carousel showThumbs={false} infiniteLoop={true} autoPlay>
+          <Carousel showThumbs={false} infiniteLoop={true} showStatus={false} autoPlay>
             {categories?.map((item) => (
               <>
                 <img key={`image ${item.id}`} src={item.img_link} alt={item.img_alt} />

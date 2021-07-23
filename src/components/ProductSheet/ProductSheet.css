@@ -14,8 +14,11 @@
   display: flex;
   justify-content: center;
 }
+.ps_slider_container .carousel .slide .legend {
+  display: none;
+}
 
-.carousel-root {
+.ps_slider_container .carousel-root {
   width: 70%;
 }
 
@@ -134,7 +137,7 @@
   width: 40%;
   height: 20%;
   box-shadow: inset 0px 1px 3px 0px #91b8b3;
-  background: linear-gradient(to bottom, #CCD5C9 5%, #0D3648 100%);
+  background: linear-gradient(to bottom, #ccd5c9 5%, #0d3648 100%);
   border-radius: 5px;
   border: 1px solid #566963;
   cursor: pointer;
@@ -146,7 +149,7 @@
   text-shadow: 0px -1px 0px #2b665e;
 }
 .ps_cart_button:hover {
-  background: linear-gradient(to bottom, #0D3648 5%, #CCD5C9 100%);
+  background: linear-gradient(to bottom, #0d3648 5%, #ccd5c9 100%);
 }
 .ps_cart_button:active {
   position: relative;

@@ -27,6 +27,9 @@
   align-items: center;
   flex-direction: column;
 }
+.encadreShop .carousel-root {
+  width: 90%;
+}
 
 .h_Texte {
   text-align: center;
