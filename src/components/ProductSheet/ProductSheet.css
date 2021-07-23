@@ -1,11 +1,10 @@
 .ps_mainSection {
-  background: #f4e2de;
+  /* background: #f4e2de; */
   color: #0d3648;
 }
 
 .ps_title {
-  background: #0d3648;
-  color: white;
+  color: #0d3648;
   padding-left: 0.5em;
 }
 
