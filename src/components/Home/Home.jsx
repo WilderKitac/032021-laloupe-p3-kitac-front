@@ -39,6 +39,9 @@ function Home() {
           </Carousel>
         </div>
       </div>
+      <div className="h_separe">
+      <hr></hr>
+      </div>
       <div className="h_Texte">
         <h1 className="h_PartiTwo">Apprendre a coudre avec Kitac</h1>
         <h2 className="h_PartiTwo">Un concept original</h2>
@@ -52,7 +55,10 @@ function Home() {
         <img alt="imageHome2" src="https://picsum.photos/150/100" />
       </div>
       <div className="h_Bouton">
-        <button className="ps_cart_button">Je me lance</button>
+        <button className="h_cart_button">Je me lance</button>
+      </div>
+      <div className="h_separe">
+      <hr></hr>
       </div>
       <div className="h_Texte">
         <h1>L'EQUIPE</h1>
@@ -73,11 +79,7 @@ function Home() {
         </figure>
       </div>
       <div className="h_Bouton">
-        <button className="ps_cart_button">Faisons connaissance</button>
-      </div>
-      <div className="h_NewsLetter">
-        <p>Restez informés des nouveautés en aveant-première.</p>
-        <p>Promis, On va pas vous spammer !</p>
+        <button className="h_cart_button">Faisons connaissance</button>
       </div>
     </section>
   );
