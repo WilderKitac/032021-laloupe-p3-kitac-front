@@ -15,6 +15,10 @@
   display: flex;
   justify-content: center;
 }
+.ps_slider_container .carousel .slide .legend {
+  display: none;
+}
+
 
 .carousel-root {
   width: 70%;
