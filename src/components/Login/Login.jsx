@@ -23,7 +23,6 @@ export default function Login({ refreshToken }) {
         withCredentials: true,
       })
         .then(({ data }) => {
-          console.log(data);
           dispatch({ type: 'SET_USER', user: data.id });
           dispatch({ type: 'SET_JWT', jwt: data.token });
           dispatch({ type: 'SET_ROLE', role: data.role });

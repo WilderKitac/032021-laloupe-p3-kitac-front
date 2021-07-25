@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useStateValue } from '../../context/contextProvider';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './Cart.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 export default function Cart() {
   const [{ cart, user }, dispatch] = useStateValue();
+  const history = useHistory();
+
   let total = 0;
   cart.forEach((item) => (total += item.prodPrice));
 
@@ -16,9 +21,22 @@ export default function Cart() {
   //fonction pour valider le panier (et renvoyer à la page de connexion si pas connecté)
   const validCart = () => {
     if (user) {
-      console.log('Bonjour');
+      const data = [];
+      cart.forEach((item) => data.push([item.id, user, item.quantity, item.sizeId, item.materialId, item.suppliesId, Date.now()]));
+      axios({
+        method: 'POST',
+        url: `${API_BASE_URL}/api/buys`,
+        data: data,
+      })
+        .then((data) => data.data)
+        .then(() => {
+          alert('Panier commandé avec succès, nous reviendrons vers vous dans les plus brefs délais');
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
     } else {
-      console.log('Pas possible');
+      history.push('/login');
     }
   };
 
