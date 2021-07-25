@@ -10,7 +10,7 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function ProductDetails() {
   const [stateTabs, setStateTabs] = useState(1);
-  const [{ cart }, dispatch] = useStateValue();
+  const [, dispatch] = useStateValue();
   const [prodDetail, setProdDetail] = useState();
   const [selectedSize, setSelectedSize] = useState('Taille');
   const [selectedMaterial, setSelectedMaterial] = useState('Matière');

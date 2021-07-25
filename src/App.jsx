@@ -3,6 +3,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import { useStateValue } from '../src/context/contextProvider';
 import axios from 'axios';
 import Home from './components/Home/Home';
+import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import ProductDetails from './components/ProductSheet/ProductDetails';
 import Kezako from './components/Kezako/Kezako';
@@ -63,6 +64,7 @@ function App() {
           <img className="logoHome" alt="imageHome" src="/src/img/KITAC_logo-07.png" />
         </Link>
       </nav>
+      <Nav />
       <Switch>
         <Route exact path="/">
           <Home />
