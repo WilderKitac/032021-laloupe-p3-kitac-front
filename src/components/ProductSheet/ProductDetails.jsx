@@ -29,8 +29,23 @@ function ProductDetails() {
   };
 
   function selectProduct() {
-    const tempTable = { id: prodDetail.maininformation[0].id, selectedSize, selectedMaterial, selectedSupplies };
-    dispatch({ type: 'ADD_CART', item: tempTable });
+    if (selectedSize !== 'Taille' && selectedMaterial !== 'Matière') {
+      const tempTable = {
+        id: prodDetail.maininformation[0].id,
+        prodPrice: prodDetail.maininformation[0].product_price,
+        prodName: prodDetail.maininformation[0].name,
+        prodImg: prodDetail.images[0].link,
+        size: selectedSize,
+        sizeId: prodDetail?.size.filter((size) => size.size_letter === selectedSize)[0].id,
+        material: selectedMaterial,
+        materialId: prodDetail?.size.filter((size) => size.size_letter === selectedSize)[0].id,
+        supplies: selectedSupplies === 'true' ? prodDetail?.supplies[0].title : null,
+        suppliesId: selectedSupplies === 'true' ? prodDetail?.supplies[0].id : null,
+      };
+      dispatch({ type: 'ADD_CART', item: tempTable });
+    } else {
+      alert('Veuillez sélectionner un taille et une matière');
+    }
   }
 
   return (
@@ -47,6 +62,7 @@ function ProductDetails() {
         </Carousel>
       </div>
       <div className="ps_general">
+        <p className="ps_price">{prodDetail?.maininformation[0].product_price.toFixed(2)}€</p>
         <div className="ps_difficulty">
           <p>
             <strong>Difficulté : </strong>
@@ -93,9 +109,9 @@ function ProductDetails() {
           <div className={stateTabs === 1 ? 'ps_tabs ps_active_tabs' : 'ps_tabs'} onClick={() => appearTab(1)}>
             Contenu du kit
           </div>
-          <div className={stateTabs === 2 ? 'ps_tabs ps_active_tabs' : 'ps_tabs'} onClick={() => appearTab(2)}>
+          {/* <div className={stateTabs === 2 ? 'ps_tabs ps_active_tabs' : 'ps_tabs'} onClick={() => appearTab(2)}>
             Personnalisation
-          </div>
+          </div> */}
           <div className={stateTabs === 3 ? 'ps_tabs ps_active_tabs' : 'ps_tabs'} onClick={() => appearTab(3)}>
             Savoir faire
           </div>
@@ -108,10 +124,10 @@ function ProductDetails() {
             Contenu du kit : Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa quod nemo consectetur beatae tempore ratione dignissimos
             ab repellat iusto hic, eum labore dolor. Dolor obcaecati cum illo exercitationem
           </p>
-          <p className={stateTabs === 2 ? 'ps_active-content' : 'ps_content'}>
+          {/* <p className={stateTabs === 2 ? 'ps_active-content' : 'ps_content'}>
             Personnalisation: Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ea minus voluptatibus accusamus, ipsam tempore ut sit
             eaque enim minima modi cum perspiciatis dolores officiis temporibus vel fugit{' '}
-          </p>
+          </p> */}
           <p className={stateTabs === 3 ? 'ps_active-content' : 'ps_content'}>
             Savoir faire: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus magnam similique, dolorem dolorum reprehenderit rerum
             illo quas. Ullam rem accusantium ab voluptatibus dolorum impedit distinctio quibusdam
@@ -155,17 +171,18 @@ function ProductDetails() {
               </option>
             ))}
           </select>
-          <p>
+          <p className={prodDetail?.supplies[0].id ? 'ps_suppliesToSelect' : 'ps_nosupply'}>
             <strong>Fournitures:</strong>
           </p>
           <select
-            id="ps_suppliesToSelect"
+            className={prodDetail?.supplies[0].id ? 'ps_suppliesToSelect' : 'ps_nosupply'}
             value={selectedSupplies}
             onBlur={(item) => setSelectedSupplies(item.target.value)}
             onChange={(item) => setSelectedSupplies(item.target.value)}>
-            <option defaultValue="unselect">Fournitures :</option>
             <option value="true">Oui</option>
-            <option value="false">Non</option>
+            <option value="false" selected>
+              Non
+            </option>
           </select>
         </div>
         <button className="ps_cart_button" onClick={selectProduct}>

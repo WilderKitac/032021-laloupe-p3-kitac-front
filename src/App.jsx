@@ -9,6 +9,7 @@ import Kezako from './components/Kezako/Kezako';
 import Login from './components/Login/Login';
 import Shop from './components/Shop/Shop';
 import AdminPage from './components/Admin/AdminPage';
+import Cart from './components/cart/Cart';
 
 import './App.css';
 
@@ -80,6 +81,9 @@ function App() {
         </Route>
         <Route path="/Kezako">
           <Kezako />
+        </Route>
+        <Route path="/Cart">
+          <Cart />
         </Route>
       </Switch>
       <Footer />

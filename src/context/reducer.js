@@ -36,9 +36,9 @@ const reducer = (state, action) => {
       const itemIndex = cartToUpdate.findIndex((item) => {
         return (
           item.id === action.item.id &&
-          item.selectedSize === action.item.selectedSize &&
-          item.selectedMaterial === action.item.selectedMaterial &&
-          item.selectedSupplies === action.item.selectedSupplies
+          item.size === action.item.size &&
+          item.material === action.item.material &&
+          item.supplies === action.item.supplies
         );
       });
       if (itemIndex > -1) {
@@ -46,6 +46,11 @@ const reducer = (state, action) => {
       } else {
         cartToUpdate.push({ ...action.item, quantity: 1 });
       }
+      return { ...state, cart: cartToUpdate };
+    }
+    case 'DELETE_CART': {
+      const cartToUpdate = [...state.cart];
+      cartToUpdate.splice(action.index, 1);
       return { ...state, cart: cartToUpdate };
     }
     case 'SET_PRODDETAIL': {

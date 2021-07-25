@@ -23,7 +23,8 @@ export default function Login({ refreshToken }) {
         withCredentials: true,
       })
         .then(({ data }) => {
-          dispatch({ type: 'SET_USER', user: data.user });
+          console.log(data);
+          dispatch({ type: 'SET_USER', user: data.id });
           dispatch({ type: 'SET_JWT', jwt: data.token });
           dispatch({ type: 'SET_ROLE', role: data.role });
           if (data.token !== undefined) {
@@ -40,17 +41,42 @@ export default function Login({ refreshToken }) {
     }
   };
 
+  const handleLogout = (event) => {
+    event.preventDefault();
+    {
+      axios({
+        method: 'POST',
+        url: `${API_BASE_URL}/api/users/logout`,
+        withCredentials: true,
+        headers: { authorization: `Bearer ${jwt}` },
+      })
+        .then(() => {
+          dispatch({ type: 'RESET_USER' });
+          dispatch({ type: 'RESET_JWT' });
+          dispatch({ type: 'RESET_ROLE' });
+          alert('Vous avez été déconnecté');
+          history.push('/');
+        })
+        .catch((err) => {
+          alert(err.response.data);
+        });
+    }
+  };
+
   return (
-    <form className="form" onSubmit={(event) => handleSubmit(event)}>
-      <h2>Page de connexion</h2>
-      <label htmlFor="email" className="form__label">
-        Email : <input type="email" id="email" className="form__input" value={email} onChange={(event) => setEmail(event.target.value)} />
-      </label>
-      <label htmlFor="password" className="form__label">
-        Mot de passe :{' '}
-        <input type="password" id="password" className="form__input" value={password} onChange={(event) => setPassword(event.target.value)} />
-      </label>
-      <input className="button" type="submit" value="Se connecter" />
-    </form>
+    <>
+      <form className="form" onSubmit={(event) => handleSubmit(event)}>
+        <h2>Page de connexion</h2>
+        <label htmlFor="email" className="form__label">
+          Email : <input type="email" id="email" className="form__input" value={email} onChange={(event) => setEmail(event.target.value)} />
+        </label>
+        <label htmlFor="password" className="form__label">
+          Mot de passe :{' '}
+          <input type="password" id="password" className="form__input" value={password} onChange={(event) => setPassword(event.target.value)} />
+        </label>
+        <input className="button" type="submit" value="Se connecter" />
+      </form>
+      <input className="button" type="button" value="Se déconnecter" onClick={handleLogout}></input>
+    </>
   );
 }
