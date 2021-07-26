@@ -82,6 +82,11 @@
   border: solid 1px #0d3648;
 }
 
+.zoom:hover {
+  transition: transform 0.9s;
+  transform: scale(1.1);
+}
+
 .ps_tabContainer {
   display: flex;
   flex-direction: column;
