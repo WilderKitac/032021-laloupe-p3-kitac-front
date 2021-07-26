@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import './Home.css';
 
@@ -31,9 +32,9 @@ function Home() {
             {categories?.map((item) => (
               <>
                 <img key={`image ${item.id}`} src={item.img_link} alt={item.img_alt} />
-                <a href={`/shop/${item.id}/${item.name}`} key={item.id} className="legend">
+                <Link to={`/shop/${item.id}/${item.name}`} key={item.id} className="legend">
                   {item.name}
-                </a>
+                </Link>
               </>
             ))}
           </Carousel>
