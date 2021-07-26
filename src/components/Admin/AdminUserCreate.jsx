@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useStateValue } from '../../context/contextProvider';
 import axios from 'axios';
 import { Formik, Form, Field, useField, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
@@ -30,22 +31,28 @@ const UserValidation = object().shape({
 });
 
 export default function AdminUserCreate() {
+  const [{ jwt }] = useStateValue();
+
   const handleSubmit = (values, { resetForm }) => {
-    // console.log(values);
     const userToCreate = { ...values };
-    userToCreate.adress = `${values.rue} ${values.codePostal} ${values.ville}`;
+    userToCreate.name = `${values.firstname} ${values.lastname}`;
+    userToCreate.address = `${values.rue} ${values.codePostal} ${values.ville}`;
+    userToCreate.clearPassword = `${values.password}`;
     delete userToCreate.rue;
     delete userToCreate.codePostal;
     delete userToCreate.ville;
+    delete userToCreate.firstname;
+    delete userToCreate.lastname;
+    delete userToCreate.password;
 
     axios({
       method: 'POST',
-      url: 'http://localhost:8000/api/user',
+      url: 'http://localhost:8000/api/users',
       withCredentials: true,
+      headers: { authorization: `Bearer ${jwt}` },
       data: userToCreate,
     })
       .then((data) => {
-        // console.log(data);
         resetForm({ values: '' });
         alert('Utilisateur créé avec succès');
       })

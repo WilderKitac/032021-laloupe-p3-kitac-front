@@ -21,7 +21,7 @@ function Shop() {
           setProductList(data);
         }
       });
-  }, []);
+  }, [id]);
 
   function pageHaut() {
     window.scroll(0, 0);
