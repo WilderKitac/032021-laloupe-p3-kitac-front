@@ -83,13 +83,8 @@ function App() {
         <Route path="/Kezako">
           <Kezako />
         </Route>
-<<<<<<< HEAD
-        <Route path="/Contact">
-          <Contact />
-=======
         <Route path="/Cart">
           <Cart />
->>>>>>> dev
         </Route>
       </Switch>
       <Footer />
