@@ -19,7 +19,7 @@ function Nav() {
       <div id="NavMenu">
         <Link className="nav_login" onClick={pageHaut} to="/Login">
           <img src="/src/img/userIcon.png" alt="panier" />
-          <p className={user ? 'online ' : 'offline'}></p>
+          <p className={user.length !== 0 ? 'online ' : 'offline'}></p>
         </Link>
         <Link className="nav_cart" onClick={pageHaut} to="/cart">
           <img src="/src/img/emptyCart.png" alt="panier" />

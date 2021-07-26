@@ -1,5 +1,5 @@
 export const initialState = {
-  user: null,
+  user: [],
   jwt: null,
   role: null,
   prodId: null,
@@ -14,7 +14,7 @@ const reducer = (state, action) => {
       return { ...state, user: action.user };
     }
     case 'RESET_USER': {
-      return { ...state, user: null };
+      return { ...state, user: [] };
     }
     case 'SET_JWT': {
       return { ...state, jwt: action.jwt };
