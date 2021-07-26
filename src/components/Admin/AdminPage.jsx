@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import { Link, Switch, Route, useRouteMatch } from 'react-router-dom';
 import AdminUser from './AdminUser';
 import Material from './CreateMaterial';
 import Product from './ManageProducts';
@@ -10,6 +10,9 @@ export default function AdminPage() {
   return (
     <div>
       <h1>Page Administrateur</h1>
+      <Link to={`${path}/users`}>
+        <p>Users</p>
+      </Link>
       <Switch>
         <Route path={`${path}/users`}>
           <AdminUser />
