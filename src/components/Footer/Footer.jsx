@@ -20,7 +20,9 @@ function Footer() {
         </Link>
       </div>
       <div className="footerText">
+      <Link className="FooterLink" to="/Cart">
         <p> CGV </p>
+        </Link>
         <p> Mention Légales </p>
         <p> Paiement & livraison </p>
         <p> FAQ </p>

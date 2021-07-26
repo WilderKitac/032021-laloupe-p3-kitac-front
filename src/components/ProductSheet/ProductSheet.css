@@ -28,6 +28,15 @@
   padding-left: 1em;
   line-height: 2em;
 }
+
+.ps_price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #700000;
+  text-align: right;
+  padding-right: 2rem;
+}
+
 .ps_difficulty {
   display: flex;
   align-items: center;
@@ -97,7 +106,7 @@
   align-items: center;
   cursor: pointer;
   border-right: 1px solid grey;
-  padding-left: 1px;
+  padding: 0.5rem;
   border-top-right-radius: 5px;
   box-shadow: 5px 0px 11px 0px #cecece;
 }
@@ -154,4 +163,7 @@
 .ps_cart_button:active {
   position: relative;
   top: 1px;
+}
+.ps_nosupply {
+  display: none;
 }
