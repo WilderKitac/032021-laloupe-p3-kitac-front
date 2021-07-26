@@ -1,5 +1,6 @@
 import React from 'react';
 import './Kezako.css';
+import Modal from '../Modal/Modal';
 
 function Kezako() {
   return (
@@ -17,7 +18,7 @@ function Kezako() {
       <h3 className="text">Kitac Kezako</h3>
       <div className="container">
         <article>
-          <img className="photoKezako" src="https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg" alt="" />
+          <Modal />
           <h3 className="text">Le concept</h3>
           <p className="text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus maxime facere consequatur iusto expedita blanditiis quaerat quibusdam
@@ -26,7 +27,7 @@ function Kezako() {
         </article>
 
         <article>
-          <img className="photoKezako" src="https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg" alt="" />
+          <Modal />
           <h3 className="text">L'équipe</h3>
           <p className="text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus maxime facere consequatur iusto expedita blanditiis quaerat quibusdam
@@ -35,12 +36,7 @@ function Kezako() {
         </article>
 
         <article>
-          <img
-            className="photoKezako"
-            src="https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg"
-            alt=""
-            onClick="http://localhost:3000/Contact"
-          />
+          <Modal />
           <h3 className="text">Contact</h3>
           <p className="text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus maxime facere consequatur iusto expedita blanditiis quaerat quibusdam

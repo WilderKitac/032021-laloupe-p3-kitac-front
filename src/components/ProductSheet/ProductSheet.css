@@ -172,3 +172,9 @@
 .ps_nosupply {
   display: none;
 }
+
+.zoom:hover {
+  transition: transform 0.3s;
+  transform: scale(0.2);
+
+}
