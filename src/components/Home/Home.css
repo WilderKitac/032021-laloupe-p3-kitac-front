@@ -1,0 +1,102 @@
+.rsw-container{
+  background: rgb(237,227,216);
+  background: linear-gradient(180deg, rgba(237,227,216,1) 15%, rgba(252,247,240,1) 80%);
+}
+.logoHome {
+  width: 100%;
+}
+
+.titreHome,
+.titleShop {
+  text-align: center;
+  /* margin-top: 5%; */
+  margin-bottom: 5%;
+}
+
+.encadreTitre {
+  margin-top: 5%;
+}
+
+.imgShop {
+  display: flex;
+  justify-content: center;
+}
+
+.encadreShop {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.encadreShop .carousel-root {
+  width: 90%;
+}
+
+.h_Texte {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.h_ImageHome {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.h_Bouton {
+  display: flex;
+  justify-content: center;
+  margin: 5%;
+}
+
+.h_EncadreCrea {
+  display: flex;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.h_imgCreatrice {
+  border-radius: 90%;
+  width: 65%;
+}
+
+.h_NewsLetter {
+  text-align: center;
+}
+
+.h_figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.h_PartiTwo, .h_Bouton {
+  margin: 5% 0 5% 0;
+}
+
+.h_cart_button {
+  width: 40%;
+  height: 20%;
+  box-shadow: inset 0px 1px 3px 0px #91b8b3;
+  /* background: linear-gradient(to bottom, #CCD5C9 5%, #0D3648 100%); */
+  border-radius: 5px;
+  border: 1px solid #566963;
+  cursor: pointer;
+  background-color: rgb(13, 54, 72); 
+  font-family: Arial;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding: 11px 23px;
+  text-shadow: 0px -1px 0px #2b665e;
+  color: white;
+}
+
+hr {
+  margin-top: 5%;
+  width: 90%;
+  color: black;
+}
+
+.h_separe {
+  display: flex;
+  justify-content: center;
+}

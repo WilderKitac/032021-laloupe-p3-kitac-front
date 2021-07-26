@@ -1,0 +1,55 @@
+.footer {
+  background-color: rgb(13, 54, 72);
+  display: flex;
+  list-style: none;
+  color: white;
+  padding: 5% 0;
+  font-size: 0.8rem;
+}
+
+.FooterLink {
+  text-decoration: none;
+  color: white;
+}
+
+.logoFooter {
+  width: 75%;
+}
+
+.logoNetwork {
+    width: 60%;
+}
+
+.encadreLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+}
+
+.footerText {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 3%;
+    width: 25%;
+    line-height: 1.5em;
+}
+
+.footerNetwork {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 25%;
+}
+
+.networkLogo {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+
+.logoLink {
+  width: 33%;
+}

@@ -1,0 +1,10 @@
+.mat_form {
+  display: flex;
+  flex-direction: column;
+}
+.mat_div{
+  margin: 1em;
+}
+.mat_admin img {
+  max-width: 100px;
+}
