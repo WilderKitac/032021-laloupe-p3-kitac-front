@@ -11,6 +11,43 @@
     z-index: 100;
   }
 
+.online,
+.offline {
+    display: inline-block;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    position: relative;
+    right: 25%;
+  }
+
+  .online {
+    background: green;
+  }
+
+  .offline {
+    background: #700000;
+  }
+
+  .counter {
+    display: inline-block;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    right: 42%;
+    bottom: 36%;
+    text-align: center;
+    font-size: 1rem;
+    position: relative;
+    background: #093346;
+    color: white;
+  }
+
+  .emptyCart {
+    display: none;
+  }
+
 .navBackground {
     background: white;
     width: 33.3333%;
@@ -20,9 +57,11 @@
     font-size: 20px;
     color: black;
   }
-.nav_cart>img {
-    width: 90%;
-  }
+.nav_cart{
+  height: 10vh;
+  padding-top: 2%;
+}
+
   #menu-burger {
     padding: 0 5px;
     display: inline-block;
@@ -87,3 +126,4 @@
     font-size: 1.5em;
     text-decoration: none;
   }
+  

@@ -14,6 +14,7 @@ function Shop() {
       .then((data) => {
         if (id !== '' && id !== '0' && name !== 'tous') {
           const products = data.filter((product) => {
+            console.log(product);
             return product.categories.findIndex((category) => category.cat_id === parseInt(id, 10)) > -1;
           });
           setProductList(products);
