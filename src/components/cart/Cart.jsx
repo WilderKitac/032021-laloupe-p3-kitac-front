@@ -85,7 +85,7 @@ export default function Cart() {
           <div className="cart_item">
             <h3>Total de votre panier:</h3>
             <p className="cart_price">{total.toFixed(2)}€</p>
-            <button className="ps_cart_button" onClick={validCart}>
+            <button className="_button" onClick={validCart}>
               Valider le panier
             </button>
           </div>

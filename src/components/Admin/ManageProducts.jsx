@@ -185,12 +185,12 @@ function ManageProducts() {
   };
 
   return (
-    <section className="prod_admin">
+    <section className="admin_main">
       <h1>Gestion des Produits</h1>
-      <div className="prod_div">
+      <div className="admin_div">
         <h2>Création</h2>
         <h3>Informations produit</h3>
-        <form className="prod_form" onSubmit={submitData}>
+        <form className="admin_form" onSubmit={submitData}>
           <label>
             Nom du produit:
             <input type="text" className="mat_input" value={prodName} onChange={(e) => setProdName(e.target.value)} />
@@ -269,7 +269,7 @@ function ManageProducts() {
           </button>
         </form>
         <h3>Insérer des images</h3>
-        <form className="prod_form" onSubmit={submitFiles}>
+        <form className="admin_form" onSubmit={submitFiles}>
           <label htmlFor="file">
             <input type="file" accept="image/*" onChange={onChangeFile} multiple />
           </label>
@@ -279,19 +279,20 @@ function ManageProducts() {
           {/* {file && <img src={`${API_BASE_URL}/image/${file.filename}`} alt="fichier chargé" />} */}
         </form>
       </div>
-      <div className="prod_div">
+      <div className="admin_div">
         <h2>Suppression</h2>
-        <form className="prod_form" onSubmit={deleteMat}>
+        <form className="admin_form" onSubmit={deleteMat}>
           <label>
             Saisissez le nom du produit à effacer
             <input type="text" placeholder="Nom du produit" value={prodToDelete} onChange={(item) => setProdToDelete(item.target.value)} />
           </label>
-          {prodToDelete && (
-            <table>
+          {
+            <table className="admin_dataTable">
               <thead>
                 <tr>
                   <th>Nom</th>
                   <th>Description</th>
+                  <th>Effacer ?</th>
                 </tr>
               </thead>
               <tbody>
@@ -315,7 +316,7 @@ function ManageProducts() {
                   ))}
               </tbody>
             </table>
-          )}
+          }
         </form>
       </div>
     </section>
