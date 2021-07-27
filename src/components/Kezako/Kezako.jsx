@@ -32,7 +32,6 @@ function Kezako() {
 
         <article>
           <ModalContact />
-
           <h3 className="text">Contact</h3>
         </article>
       </div>

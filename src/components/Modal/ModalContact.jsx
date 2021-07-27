@@ -22,11 +22,6 @@ export default class ImageComponent extends React.Component {
           <dialog className="dialog" open>
             <section>
               <div>
-                <img
-                  className="photoContact"
-                  src="https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg"
-                  alt=""
-                />
                 <form className="formulaireContact">
                   <label className="formulaireContact">
                     Nom :
@@ -42,6 +37,7 @@ export default class ImageComponent extends React.Component {
                     <input type="text" name="name" />
                   </label>
                   <input className="btnContact" type="submit" value="Envoyer" onClick={this.handleShowDialog} />
+                  <input className="btnContact" type="submit" value="Annuler" onClick={this.handleShowDialog} />
                 </form>
               </div>
             </section>
