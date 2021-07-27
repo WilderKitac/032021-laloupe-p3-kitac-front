@@ -4,6 +4,8 @@ import axios from 'axios';
 import AdminUserInformation from './AdminUserInformation';
 import AdminUserCreate from './AdminUserCreate';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 export default function AdminUser() {
   const [users, setUsers] = useState([]);
   const [{ jwt }] = useStateValue();
@@ -12,12 +14,12 @@ export default function AdminUser() {
     if (jwt) {
       axios({
         method: 'GET',
-        url: 'http://localhost:8000/api/users',
+        url: `${API_BASE_URL}/api/users`,
         withCredentials: true,
         headers: { authorization: `Bearer ${jwt}` },
       })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           setUsers(data.data);
         })
         .catch((err) => {
@@ -25,8 +27,6 @@ export default function AdminUser() {
         });
     }
   }, [jwt]);
-
-
   return (
     <div>
       <h2>Gestion des utilisateurs</h2>
