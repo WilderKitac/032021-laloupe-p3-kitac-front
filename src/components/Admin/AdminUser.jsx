@@ -3,6 +3,7 @@ import { useStateValue } from '../../context/contextProvider';
 import axios from 'axios';
 import AdminUserInformation from './AdminUserInformation';
 import AdminUserCreate from './AdminUserCreate';
+import AdminUserDelete from './AdminUserDelete';
 
 export default function AdminUser() {
   const [users, setUsers] = useState([]);
@@ -38,6 +39,7 @@ export default function AdminUser() {
         ))}
       </ul>
       <AdminUserCreate />
+      <AdminUserDelete users={users} />
     </div>
   );
 }
