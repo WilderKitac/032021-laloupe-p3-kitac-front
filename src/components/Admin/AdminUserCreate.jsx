@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useStateValue } from '../../context/contextProvider';
 import axios from 'axios';
-import { Formik, Form, Field, useField, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const UserValidation = object().shape({
   firstname: string().required('Le prénom est requis'),
@@ -47,12 +49,12 @@ export default function AdminUserCreate() {
 
     axios({
       method: 'POST',
-      url: 'http://localhost:8000/api/users',
+      url: `${API_BASE_URL}/api/users`,
       withCredentials: true,
       headers: { authorization: `Bearer ${jwt}` },
       data: userToCreate,
     })
-      .then((data) => {
+      .then(() => {
         resetForm({ values: '' });
         alert('Utilisateur créé avec succès');
       })
