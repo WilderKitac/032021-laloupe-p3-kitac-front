@@ -1,6 +1,8 @@
 import React from 'react';
 import './Kezako.css';
-import Modal from '../Modal/Modal';
+import ModalConcept from '../Modal/ModalConcept';
+import ModalEquipe from '../Modal/ModalEquipe';
+import ModalContact from '../Modal/ModalContact';
 
 function Kezako() {
   return (
@@ -19,30 +21,19 @@ function Kezako() {
       <div className="container">
         <div className="zoom"></div>
         <article>
-          <Modal />
+          <ModalConcept />
           <h3 className="text">Le concept</h3>
-          <p className="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus maxime facere consequatur iusto expedita blanditiis quaerat quibusdam
-            fugiat dolorem similique animi, repellendus eum ullam id tenetur dolores? Aperiam, libero blanditiis?
-          </p>
         </article>
 
         <article>
-          <Modal />
+          <ModalEquipe />
           <h3 className="text">L'équipe</h3>
-          <p className="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus maxime facere consequatur iusto expedita blanditiis quaerat quibusdam
-            fugiat dolorem similique animi, repellendus eum ullam id tenetur dolores? Aperiam, libero blanditiis?
-          </p>
         </article>
 
         <article>
-          <Modal />
+          <ModalContact />
+
           <h3 className="text">Contact</h3>
-          <p className="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus maxime facere consequatur iusto expedita blanditiis quaerat quibusdam
-            fugiat dolorem similique animi, repellendus eum ullam id tenetur dolores? Aperiam, libero blanditiis?
-          </p>
         </article>
       </div>
     </section>

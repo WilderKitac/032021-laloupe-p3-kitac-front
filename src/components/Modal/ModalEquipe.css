@@ -1,0 +1,29 @@
+.dialog {
+    position: absolute;
+    right: 50;
+    bottom: 50%;
+    height: 55%;
+    background-image: url(https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg);
+  }
+  
+  .imageModal {
+    margin-top: 1em;
+    padding: 1em;
+    box-shadow: 1px 1px 10px grey;
+    max-width: 80%;
+    /* height: auto; */
+    margin: 3em;
+  }
+  
+  .modalText {
+    color: white;
+    font-size: 1.5em;
+    padding: 2em;
+    margin: 1em;
+  }
+  
+  .modalTitre {
+    color: white;
+    font-size: 2.5em;
+    text-align: center;
+  }

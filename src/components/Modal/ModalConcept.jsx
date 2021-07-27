@@ -1,5 +1,5 @@
 import React from 'react';
-import './Modal.css';
+import './ModalConcept.css';
 
 export default class ImageComponent extends React.Component {
   state = { isOpen: false };
@@ -18,9 +18,10 @@ export default class ImageComponent extends React.Component {
           onClick={this.handleShowDialog}
           alt="no image"
         />
+        <div>
         {this.state.isOpen && (
-          <dialog className="dialog" style={{ position: 'absolute' }} open onClick={this.handleShowDialog}>
-            <h3 className="modalTitre">Titre</h3>
+          <dialog className="dialog" open onClick={this.handleShowDialog}>
+            <h3 className="modalTitre">Concept</h3>
             <h3 className="modalText">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, illum odit impedit autem quasi quidem eos doloribus veritatis nisi ab fuga
               atque aperiam voluptates facere nemo! Vero labore maxime fugit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius suscipit
@@ -28,14 +29,11 @@ export default class ImageComponent extends React.Component {
               laudantium quo vel. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi dignissimos possimus voluptates molestias harum,
               aliquam maiores recusandae assumenda consequatur iure nam tempora neque ducimus dolor delectus non. Optio, quo explicabo. Lorem ipsum
               dolor sit amet consectetur adipisicing elit. Quaerat corporis laboriosam excepturi nemo. Id quaerat ad totam ea itaque accusamus
-              officia, dolore repellendus saepe ducimus facere recusandae cupiditate quibusdam nemo! Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Eum, reiciendis unde? Aliquid dignissimos corporis provident animi neque! Minima, delectus labore? Odio facere
-              reiciendis ea laborum nostrum molestias magnam natus eos? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti fugiat
-              tenetur nostrum iusto sapiente aliquam nihil doloribus, quis laboriosam ab incidunt fugit voluptatum, provident beatae repellendus sequi
-              architecto inventore saepe!
+              officia, dolore repellendus saepe ducimus facere recusandae cupiditate quibusdam nemo!
             </h3>
           </dialog>
         )}
+        </div>
       </div>
     );
   }
