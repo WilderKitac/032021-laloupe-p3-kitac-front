@@ -17,6 +17,7 @@ function Kezako() {
       </div>
       <h3 className="text">Kitac Kezako</h3>
       <div className="container">
+        <div className="zoom"></div>
         <article>
           <Modal />
           <h3 className="text">Le concept</h3>

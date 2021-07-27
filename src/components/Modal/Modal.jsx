@@ -20,6 +20,7 @@ export default class ImageComponent extends React.Component {
         />
         {this.state.isOpen && (
           <dialog className="dialog" style={{ position: 'absolute' }} open onClick={this.handleShowDialog}>
+            <h3 className="modalTitre">Titre</h3>
             <h3 className="modalText">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, illum odit impedit autem quasi quidem eos doloribus veritatis nisi ab fuga
               atque aperiam voluptates facere nemo! Vero labore maxime fugit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius suscipit
