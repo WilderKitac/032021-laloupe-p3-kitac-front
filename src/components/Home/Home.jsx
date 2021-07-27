@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import './Home.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 function Home() {
   const [categories, setCategories] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/categories/`)
+    fetch(`${API_BASE_URL}/api/categories/`)
       .then((resp) => resp.json())
       .then((data) => {
         setCategories(data);
@@ -41,7 +43,7 @@ function Home() {
         </div>
       </div>
       <div className="h_separe">
-      <hr></hr>
+        <hr></hr>
       </div>
       <div className="h_Texte">
         <h1 className="h_PartiTwo">Apprendre a coudre avec Kitac</h1>
@@ -59,10 +61,10 @@ function Home() {
         <button className="h_cart_button">Je me lance</button>
       </div>
       <div className="h_separe">
-      <hr></hr>
+        <hr></hr>
       </div>
       <div className="h_Texte">
-        <h1>L'EQUIPE</h1>
+        <h1>L&apos;EQUIPE</h1>
         <h2>Sous-tire</h2>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since

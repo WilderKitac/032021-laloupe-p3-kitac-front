@@ -22,7 +22,7 @@ export default function Cart() {
   const validCart = () => {
     if (user) {
       const data = [];
-      cart.forEach((item) => data.push([item.id, user, item.quantity, item.sizeId, item.materialId, item.suppliesId, Date.now()]));
+      cart.forEach((item) => data.push([item.id, user.id, item.quantity, item.sizeId, item.materialId, item.suppliesId, Date.now()]));
       axios({
         method: 'POST',
         url: `${API_BASE_URL}/api/buys`,
@@ -30,7 +30,22 @@ export default function Cart() {
       })
         .then((data) => data.data)
         .then(() => {
-          alert('Panier commandé avec succès, nous reviendrons vers vous dans les plus brefs délais');
+          const dataForEmail = {
+            user: user.email,
+            cart: cart,
+          };
+          axios({
+            method: 'POST',
+            url: `${API_BASE_URL}/api/send-email`,
+            data: dataForEmail,
+          })
+            .then((data) => data.data)
+            .then(() => {
+              alert("Votre commande est passée, nous revenons vers vous dès qu'lle est prise en charge");
+            })
+            .catch((err) => {
+              alert(err.message);
+            });
         })
         .catch((err) => {
           alert(err.message);

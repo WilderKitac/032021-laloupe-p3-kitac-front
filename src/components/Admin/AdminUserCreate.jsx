@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useStateValue } from '../../context/contextProvider';
 import axios from 'axios';
-import { Formik, Form, Field, useField, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 import './AdminUserCreate.css';
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const UserValidation = object().shape({
   firstname: string().required('Le prénom est requis'),
@@ -31,22 +34,28 @@ const UserValidation = object().shape({
 });
 
 export default function AdminUserCreate() {
+  const [{ jwt }] = useStateValue();
+
   const handleSubmit = (values, { resetForm }) => {
-    // console.log(values);
     const userToCreate = { ...values };
-    userToCreate.adress = `${values.rue} ${values.codePostal} ${values.ville}`;
+    userToCreate.name = `${values.firstname} ${values.lastname}`;
+    userToCreate.address = `${values.rue} ${values.codePostal} ${values.ville}`;
+    userToCreate.clearPassword = `${values.password}`;
     delete userToCreate.rue;
     delete userToCreate.codePostal;
     delete userToCreate.ville;
+    delete userToCreate.firstname;
+    delete userToCreate.lastname;
+    delete userToCreate.password;
 
     axios({
       method: 'POST',
-      url: 'http://localhost:8000/api/user',
+      url: `${API_BASE_URL}/api/users`,
       withCredentials: true,
+      headers: { authorization: `Bearer ${jwt}` },
       data: userToCreate,
     })
-      .then((data) => {
-        // console.log(data);
+      .then(() => {
         resetForm({ values: '' });
         alert('Utilisateur créé avec succès');
       })

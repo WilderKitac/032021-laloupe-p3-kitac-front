@@ -17,7 +17,7 @@ import './App.css';
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function App() {
-  const [{ user, jwt, role, prodId }, dispatch] = useStateValue();
+  const [{ prodId }, dispatch] = useStateValue();
 
   const refreshToken = () => {
     axios({
@@ -36,7 +36,7 @@ function App() {
         dispatch({ type: 'SET_JWT', jwt: token });
         dispatch({ type: 'SET_ROLE', role: role });
       })
-      .catch((err) => {
+      .catch(() => {
         // console.log('error refresh: ', err.response.data);
         dispatch({ type: 'RESET_USER' });
         dispatch({ type: 'RESET_JWT' });
@@ -49,7 +49,7 @@ function App() {
 
   useEffect(() => {
     let id = prodId;
-    fetch(`http://localhost:8000/api/products/${id}/productsheet`)
+    fetch(`${API_BASE_URL}/api/products/${id}/productsheet`)
       .then((resp) => resp.json())
       .then((data) => {
         let objProd = JSON.stringify(data);

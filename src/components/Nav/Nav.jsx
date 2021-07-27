@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useStateValue } from '../../context/contextProvider';
 import { Link } from 'react-router-dom';
 import './Nav.css';
 
 function Nav() {
   const [appearedMenu, setAppearedMenu] = useState(false);
+  const [{ cart, user }] = useStateValue();
 
   function menuAppearing() {
     setAppearedMenu(!appearedMenu);
@@ -17,9 +19,17 @@ function Nav() {
       <div id="NavMenu">
         <Link className="nav_login" onClick={pageHaut} to="/Login">
           <img src="/src/img/userIcon.png" alt="panier" />
+<<<<<<< HEAD
         </Link>
         <Link className="nav_cart" onClick={pageHaut} to="/cart">
           <img src="/src/img/emptyCart.png" alt="panier" />
+=======
+          <p className={user.length !== 0 ? 'online ' : 'offline'}></p>
+        </Link>
+        <Link className="nav_cart" onClick={pageHaut} to="/cart">
+          <img src="/src/img/emptyCart.png" alt="panier" />
+          <p className={cart.length !== 0 ? 'counter' : 'emptyCart'}>{cart.length}</p>
+>>>>>>> d8c54dae8b3d35e0e176c62e795086d282ef2ce3
         </Link>
         <div id="menu-burger" onClick={menuAppearing} className={appearedMenu ? 'clicked' : ''}>
           <div className="bar1"></div>
