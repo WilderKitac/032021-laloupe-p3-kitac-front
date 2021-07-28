@@ -86,7 +86,13 @@ h2 {
 
    .logoHome {
     height: 100%;
+    width: auto;
   } 
+
+  .navLogo a{
+    display: flex;
+    justify-content: center;
+  }
 
   h1 {
     font-size: 3rem;
