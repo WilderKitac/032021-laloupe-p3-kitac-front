@@ -41,8 +41,8 @@ h2 {
   border-left: 12px solid rgba(252,247,240,1)!important;
 }
 
-.carousel .slide .legend {
-  bottom: 35px;
+.carousel .slide .leg.coutureOne, .coutureTwo {
+  width: 40%;
   left: 50%;
   margin-left: -45%;
   width: 90%;
@@ -78,11 +78,26 @@ h2 {
   top: 1px;
 }
 
-@media only screen and (min-width: 1024px) {
-  .navLogo {
+@media screen and (min-width: 1024px) {
+  
+  .encadreHome {
     height: 20vh;
-  } 
-  .logoHome{
-    height: 100%;
   }
+
+   .logoHome {
+    height: 100%;
+  } 
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 2rem;
+  }
+
 }

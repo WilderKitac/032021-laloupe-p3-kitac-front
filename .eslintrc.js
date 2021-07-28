@@ -29,5 +29,6 @@ module.exports = {
     'no-console': 1,
     'react/jsx-filename-extension': 'error',
     'react/prop-types': 0,
+    'react/state-in-constructor': 0,
   },
 };
