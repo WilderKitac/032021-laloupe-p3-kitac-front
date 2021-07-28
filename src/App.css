@@ -99,5 +99,6 @@ h2 {
   p {
     font-size: 2rem;
   }
-
+  ._button {
+    font-size: 2rem;
 }
