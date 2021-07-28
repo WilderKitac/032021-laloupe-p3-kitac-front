@@ -11,7 +11,7 @@ function Kezako() {
         <a href="http://localhost:3000/shop">
           <img
             className="grandePhoto"
-            src="https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg"
+            src="src/img/equipe.jpg"
             alt="photo"
             onClick="http://localhost:3000/shop"
           />
