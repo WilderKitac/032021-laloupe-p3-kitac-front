@@ -97,10 +97,12 @@ function ProductDetails() {
         <h2>Matières</h2>
         <div className="ps_materials">
           {prodDetail?.materials.map((material) => (
-            <figure key={material.id}>
-              <img className="ps_material_image" src={`${API_BASE_URL}/image/${material.image}`} alt={material.material_type}></img>
-              <p key={material.id}>{material.material_type}</p>
-            </figure>
+            <div className="zoom">
+              <figure key={material.id}>
+                <img className="ps_material_image" src={`${API_BASE_URL}/image/${material.image}`} alt={material.material_type}></img>
+                <p key={material.id}>{material.material_type}</p>
+              </figure>
+            </div>
           ))}
         </div>
       </div>

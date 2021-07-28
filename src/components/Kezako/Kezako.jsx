@@ -1,23 +1,39 @@
 import React from 'react';
 import './Kezako.css';
+import ModalConcept from '../Modal/ModalConcept';
+import ModalEquipe from '../Modal/ModalEquipe';
+import ModalContact from '../Modal/ModalContact';
 
 function Kezako() {
   return (
-    <section>
-      <div>
-        <h1>About us!</h1>
-        <h2>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus vel nemo at molestias eligendi deleniti ipsum, eos, omnis dolor labore
-          praesentium quasi repellat aliquid dolore? Dolorum repellendus iste corrupti odit.
-        </h2>
+    <section className="body">
+      <div className="zoom">
+        <a href="http://localhost:3000/shop">
+          <img
+            className="grandePhoto"
+            src="https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg"
+            alt="photo"
+            onClick="http://localhost:3000/shop"
+          />
+        </a>
       </div>
-      <div>
-        <h3>About us!</h3>
-        <img
-          className="photo"
-          src="https://scontent-cdt1-1.xx.fbcdn.net/v/t1.6435-9/206039359_108095841525585_7390601503102776035_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=973b4a&_nc_ohc=AlhBIRm8aZwAX_CFdnb&_nc_ht=scontent-cdt1-1.xx&oh=3f2bf365a472f24b132670ee76e9def1&oe=60EC850D"
-          alt="l'équipe"
-        />
+      <h3 className="text">Kitac Kezako</h3>
+      <div className="container">
+        <div className="zoom"></div>
+        <article>
+          <ModalConcept />
+          <h3 className="text">Le concept</h3>
+        </article>
+
+        <article>
+          <ModalEquipe />
+          <h3 className="text">L'équipe</h3>
+        </article>
+
+        <article>
+          <ModalContact />
+          <h3 className="text">Contact</h3>
+        </article>
       </div>
     </section>
   );

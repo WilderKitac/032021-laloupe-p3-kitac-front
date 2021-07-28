@@ -3,6 +3,7 @@ import { useStateValue } from '../../context/contextProvider';
 import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
+import './AdminUserCreate.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
