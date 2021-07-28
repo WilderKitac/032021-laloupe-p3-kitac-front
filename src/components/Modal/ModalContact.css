@@ -63,12 +63,31 @@
   align-items: center;
 }
 
-.btnContact {
-  width: 20%;
-  margin-bottom: 5%;
-}
-
 .photoContact {
   margin-top: 5%;
   max-width: 30%;
+}
+
+.buttonContact {
+  margin-bottom: 2em;
+  width: 10%;
+  height: 20%;
+  box-shadow: inset 0px 1px 3px 0px #91b8b3;
+  background: linear-gradient(to bottom, #ccd5c9 5%, #0d3648 100%);
+  border-radius: 5px;
+  border: 1px solid #566963;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding: 11px 23px;
+  text-shadow: 0px -1px 0px #2b665e;
+}
+._button:hover {
+  background: linear-gradient(to bottom, #0d3648 5%, #ccd5c9 100%);
+}
+._button:active {
+  position: relative;
+  top: 1px;
 }

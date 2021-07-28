@@ -24,10 +24,11 @@
 }
 
 .grandePhoto {
-  max-width: 70%;
-  min-width: 50%;
+  height
   display: block;
   margin: auto;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .text {
@@ -40,4 +41,9 @@
 .zoom:hover {
   transition: transform 0.9s;
   transform: scale(1.1);
+}
+
+.carouselKezako {
+  width: 100%;
+  margin: auto;
 }
