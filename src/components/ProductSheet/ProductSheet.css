@@ -65,15 +65,9 @@
 
 .ps_materials {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   width: 90%;
   margin: 0 auto;
-}
-
-.ps_materials figure {
-  width: 20%;
-  margin: 0.05em;
-  text-align: center;
 }
 
 .ps_material_image {
@@ -82,9 +76,9 @@
   border: solid 1px #0d3648;
 }
 
-.zoom:hover {
+.ps_material_image:hover {
   transition: transform 0.9s;
-  transform: scale(1.1);
+  transform: scale(5);
 }
 
 .ps_tabContainer {
@@ -151,8 +145,53 @@
   display: none;
 }
 
-.zoom:hover {
-  transition: transform 0.3s;
-  transform: scale(0.2);
+@media only screen and (min-width: 1024px) {
+  .ps_title {
+    text-align: center;
+  }
 
+  .ps_presentation {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .ps_slider_container {
+    width: 40%;
+  }
+
+  .ps_properties {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+
+  .ps_general {
+    margin-top: 5%;
+    padding: 5% 1%;
+    line-height: 2.5rem;
+  }
+
+  .ps_general > *:nth-child(1) {
+    order: 4;
+  }
+
+  .ps_price {
+    font-size: 2rem;
+  }
+
+  .ps_material_container h2 {
+    text-align: left;
+  }
+
+  .ps_optionsSelect {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .ps_selector {
+    width: 50%;
+  }
+
+  .ps_selector > select {
+    font-size: 1.5rem;;
+  }
 }
