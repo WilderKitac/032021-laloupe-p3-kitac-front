@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useStateValue } from '../../context/contextProvider';
 import axios from 'axios';
 import './adminForms.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function ManageProducts() {
+  const [{ jwt }] = useStateValue();
   const [fileSelected, setFileSelected] = useState([]);
   const [prodName, setProdName] = useState(null);
   const [prodDesc, setProdDesc] = useState(null);
@@ -52,6 +54,8 @@ function ManageProducts() {
     axios({
       method: 'POST',
       url: `${API_BASE_URL}/api/products`,
+      withCredentials: true,
+      headers: { authorization: `Bearer ${jwt}` },
       data: data,
     })
       .then((data) => data.data)
@@ -97,6 +101,8 @@ function ManageProducts() {
       axios({
         method: 'POST',
         url: `${API_BASE_URL}/api/productsimages/multer`,
+        withCredentials: true,
+        headers: { authorization: `Bearer ${jwt}` },
         data: data,
       })
         .then((data) => [data.data])
@@ -167,15 +173,18 @@ function ManageProducts() {
       });
   }, []);
 
+  //fonction pour suppression d'un produit
   const deleteMat = (e) => {
     let id = idToDelete;
     e.preventDefault();
     axios({
       method: 'DELETE',
       url: `${API_BASE_URL}/api/products/${id}`,
+      withCredentials: true,
+      headers: { authorization: `Bearer ${jwt}` },
     })
       .then(() => {
-        //ceci permet de recharger la pagse à chaque suppression
+        //ceci permet de recharger la page à chaque suppression
         window.location.reload();
         alert('Produit supprimé avec succès');
       })
@@ -185,12 +194,12 @@ function ManageProducts() {
   };
 
   return (
-    <section className="prod_admin">
+    <section className="admin_main">
       <h1>Gestion des Produits</h1>
-      <div className="prod_div">
+      <div className="admin_div">
         <h2>Création</h2>
         <h3>Informations produit</h3>
-        <form className="prod_form" onSubmit={submitData}>
+        <form className="admin_form" onSubmit={submitData}>
           <label>
             Nom du produit:
             <input type="text" className="mat_input" value={prodName} onChange={(e) => setProdName(e.target.value)} />
@@ -269,7 +278,7 @@ function ManageProducts() {
           </button>
         </form>
         <h3>Insérer des images</h3>
-        <form className="prod_form" onSubmit={submitFiles}>
+        <form className="admin_form" onSubmit={submitFiles}>
           <label htmlFor="file">
             <input type="file" accept="image/*" onChange={onChangeFile} multiple />
           </label>
@@ -279,19 +288,20 @@ function ManageProducts() {
           {/* {file && <img src={`${API_BASE_URL}/image/${file.filename}`} alt="fichier chargé" />} */}
         </form>
       </div>
-      <div className="prod_div">
+      <div className="admin_div">
         <h2>Suppression</h2>
-        <form className="prod_form" onSubmit={deleteMat}>
+        <form className="admin_form" onSubmit={deleteMat}>
           <label>
             Saisissez le nom du produit à effacer
             <input type="text" placeholder="Nom du produit" value={prodToDelete} onChange={(item) => setProdToDelete(item.target.value)} />
           </label>
-          {prodToDelete && (
-            <table>
+          {
+            <table className="admin_dataTable">
               <thead>
                 <tr>
                   <th>Nom</th>
                   <th>Description</th>
+                  <th>Effacer ?</th>
                 </tr>
               </thead>
               <tbody>
@@ -315,7 +325,7 @@ function ManageProducts() {
                   ))}
               </tbody>
             </table>
-          )}
+          }
         </form>
       </div>
     </section>

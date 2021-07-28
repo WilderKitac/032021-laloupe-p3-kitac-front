@@ -1,10 +1,94 @@
-.mat_form {
+#admin_container {
+  padding : 1rem 0;
+  text-align: center;
+}
+
+.admin_nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0;
+}
+
+.admin_nav_link{
+	box-shadow:inset 0px 0px 15px 3px #23395e;
+	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+	background-color:#2e466e;
+	border-radius:17px;
+	border:1px solid #1f2f47;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:6px 13px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+  width: 16%;
+}
+
+.admin_nav_link:hover{
+  background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
+	background-color:#415989;
+}
+
+.admin_nav_link:active{
+  position:relative;
+	top:1px;
+}
+
+.admin_form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px grey;
 }
-.mat_div{
+.admin_form>* {
+  margin: 0.5rem 0;
+}
+
+.admin_div{
   margin: 1em;
 }
-.mat_admin img {
+.admin_main img {
   max-width: 100px;
+}
+
+.admin_main h1 {
+  font-size: 1.5rem;
+}
+
+table.admin_dataTable {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 95%;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.admin_dataTable td, table.admin_dataTable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+table.admin_dataTable tbody td {
+  font-size: 13px;
+}
+table.admin_dataTable tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table.admin_dataTable thead {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+table.admin_dataTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+table.admin_dataTable thead th:first-child {
+  border-left: none;
 }

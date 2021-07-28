@@ -187,7 +187,7 @@ function ProductDetails() {
             </option>
           </select>
         </div>
-        <button className="ps_cart_button" onClick={selectProduct}>
+        <button className="_button" onClick={selectProduct}>
           Ajouter au panier
         </button>
       </div>
