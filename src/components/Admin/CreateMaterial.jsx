@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useStateValue } from '../../context/contextProvider';
 import axios from 'axios';
 import './adminForms.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function CreateMaterial() {
+  const [{ jwt }] = useStateValue();
   const [fileSelected, setFileSelected] = useState(null);
   const [file, setFile] = useState(null);
   const [type, setType] = useState(null);
@@ -41,6 +43,8 @@ function CreateMaterial() {
       axios({
         method: 'POST',
         url: `${API_BASE_URL}/api/materials`,
+        withCredentials: true,
+        headers: { authorization: `Bearer ${jwt}` },
         data,
       })
         .then((data) => data.data)
@@ -52,8 +56,8 @@ function CreateMaterial() {
           setPrice('');
           setQuantity('');
         })
-        .catch((err) => {
-          alert('Création du lien échouée');
+        .catch(() => {
+          alert('Création du lien a échoué : êtes-vous connecté ?');
         });
     }
   };
@@ -85,6 +89,8 @@ function CreateMaterial() {
       axios({
         method: 'POST',
         url: `${API_BASE_URL}/api/materials/withImage/${id}`,
+        withCredentials: true,
+        headers: { authorization: `Bearer ${jwt}` },
         data,
       })
         .then((data) => data.data)
@@ -108,13 +114,15 @@ function CreateMaterial() {
       axios({
         method: 'PUT',
         url: `${API_BASE_URL}/api/materials/${id}`,
+        withCredentials: true,
+        headers: { authorization: `Bearer ${jwt}` },
         data,
       })
         .then(() => {
           alert('Matière mise à jour avec succès');
         })
         .catch(() => {
-          alert('La mise à jour a échoué');
+          alert('La mise à jour a échoué : êtes-vous connecté ?');
         });
     }
   };
@@ -125,12 +133,14 @@ function CreateMaterial() {
     axios({
       method: 'DELETE',
       url: `${API_BASE_URL}/api/materials/${id}`,
+      withCredentials: true,
+      headers: { authorization: `Bearer ${jwt}` },
     })
       .then(() => {
         alert('Matière supprimée avec succès');
       })
       .catch(() => {
-        alert('La suppression a échoué');
+        alert('La suppression a échoué : êtes-vous connecté ?');
       });
   };
 

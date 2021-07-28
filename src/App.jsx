@@ -17,7 +17,7 @@ import './App.css';
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function App() {
-  const [{ prodId }, dispatch] = useStateValue();
+  const [{ prodId, role }, dispatch] = useStateValue();
 
   const refreshToken = () => {
     axios({
@@ -72,9 +72,11 @@ function App() {
         <Route path={['/shop/:id/:name', '/shop/:id']}>
           <Shop />
         </Route>
-        <Route path="/Admin">
-          <AdminPage />
-        </Route>
+        {role === 2 && (
+          <Route path="/Admin">
+            <AdminPage />
+          </Route>
+        )}
         <Route path="/ProductSheet">
           <ProductDetails />
         </Route>

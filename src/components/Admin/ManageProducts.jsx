@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useStateValue } from '../../context/contextProvider';
 import axios from 'axios';
 import './adminForms.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function ManageProducts() {
+  const [{ jwt }] = useStateValue();
   const [fileSelected, setFileSelected] = useState([]);
   const [prodName, setProdName] = useState(null);
   const [prodDesc, setProdDesc] = useState(null);
@@ -52,6 +54,8 @@ function ManageProducts() {
     axios({
       method: 'POST',
       url: `${API_BASE_URL}/api/products`,
+      withCredentials: true,
+      headers: { authorization: `Bearer ${jwt}` },
       data: data,
     })
       .then((data) => data.data)
@@ -97,6 +101,8 @@ function ManageProducts() {
       axios({
         method: 'POST',
         url: `${API_BASE_URL}/api/productsimages/multer`,
+        withCredentials: true,
+        headers: { authorization: `Bearer ${jwt}` },
         data: data,
       })
         .then((data) => [data.data])
@@ -167,15 +173,18 @@ function ManageProducts() {
       });
   }, []);
 
+  //fonction pour suppression d'un produit
   const deleteMat = (e) => {
     let id = idToDelete;
     e.preventDefault();
     axios({
       method: 'DELETE',
       url: `${API_BASE_URL}/api/products/${id}`,
+      withCredentials: true,
+      headers: { authorization: `Bearer ${jwt}` },
     })
       .then(() => {
-        //ceci permet de recharger la pagse à chaque suppression
+        //ceci permet de recharger la page à chaque suppression
         window.location.reload();
         alert('Produit supprimé avec succès');
       })
