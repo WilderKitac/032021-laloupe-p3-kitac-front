@@ -1,12 +1,39 @@
 import React from 'react';
+import axios from 'axios';
 import './ModalContact.css';
 
-export default class ImageComponent extends React.Component {
-  state = { isOpen: false };
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+export default class ModalContact extends React.Component {
+  state = { isOpen: false, name: '', email: '', message: '' };
 
   handleShowDialog = () => {
     this.setState({ isOpen: !this.state.isOpen });
     console.log('cliked');
+  };
+
+  sendEmail = (event) => {
+    event.preventDefault();
+    const dataContact = {
+      name: this.state.name,
+      email: this.state.email,
+      message: this.state.message,
+    };
+
+    console.log(dataContact);
+    axios({
+      method: 'POST',
+      url: `${API_BASE_URL}/api/contact`,
+      data: dataContact,
+    })
+      .then((data) => data.data)
+      .then(() => {
+        this.handleShowDialog();
+        alert('Votre message a été envoyé');
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
   };
 
   render() {
@@ -22,22 +49,42 @@ export default class ImageComponent extends React.Component {
           <dialog className="dialog" open>
             <section>
               <div>
-                <form className="formulaireContact">
+                <form className="formulaireContact" onSubmit={this.sendEmail}>
                   <label className="formulaireContact">
                     Nom :
-                    <input type="text" name="name" />
+                    <input
+                      type="text"
+                      name="name"
+                      onChange={(event) => {
+                        this.setState({ name: event.target.value });
+                      }}
+                    />
                   </label>
                   <label className="formulaireContact">
                     Email :
-                    <input type="text" email="email" />
+                    <input
+                      type="text"
+                      email="email"
+                      onChange={(event) => {
+                        this.setState({ email: event.target.value });
+                      }}
+                    />
                   </label>
 
                   <label className="formulaireContact">
                     Message :
-                    <input type="text" name="name" />
+                    <input
+                      type="text"
+                      name="name"
+                      onChange={(event) => {
+                        this.setState({ message: event.target.value });
+                      }}
+                    />
                   </label>
-                  <input className="btnContact" type="submit" value="Envoyer" onClick={this.handleShowDialog} />
-                  <input className="btnContact" type="submit" value="Annuler" onClick={this.handleShowDialog} />
+                  <input className="btnContact" type="submit" value="Envoyer" />
+                  <button className="btnContact" type="button" onClick={this.handleShowDialog}>
+                    Annuler
+                  </button>
                 </form>
               </div>
             </section>

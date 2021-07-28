@@ -1,7 +1,7 @@
 import React from 'react';
 import './ModalConcept.css';
 
-export default class ImageComponent extends React.Component {
+export default class ModalConcept extends React.Component {
   state = { isOpen: false };
 
   handleShowDialog = () => {
