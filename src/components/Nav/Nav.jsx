@@ -5,7 +5,7 @@ import './Nav.css';
 
 function Nav() {
   const [appearedMenu, setAppearedMenu] = useState(false);
-  const [{ cart, user }] = useStateValue();
+  const [{ cart, user, role }] = useStateValue();
 
   function menuAppearing() {
     setAppearedMenu(!appearedMenu);
@@ -41,6 +41,11 @@ function Nav() {
         <Link onClick={pageHaut} to="/Kezako">
           Kezako
         </Link>
+        {role === 2 && (
+          <Link onClick={pageHaut} to="/Kezako">
+            Admin
+          </Link>
+        )}
       </nav>
     </main>
   );
