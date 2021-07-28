@@ -2,9 +2,9 @@
   box-sizing: border-box;
 }
 
-input[type='text'],
-select,
-textarea {
+.inputName[type='text'],
+
+.messageContact {
   width: 40%;
   padding: 30px;
   border: 1px solid #ccc;
@@ -13,7 +13,7 @@ textarea {
   resize: vertical;
 }
 
-input[type='submit'] {
+.inputName[type='submit'] {
   background-color: #7c6c65;
   color: white;
   padding: 15px 20px;
@@ -21,9 +21,9 @@ input[type='submit'] {
   cursor: pointer;
 }
 
-input[type='submit']:hover {
+/* .inputName[type='submit']:hover {
   background-color: #bb3f2a;
-}
+} */
 
 .contact {
   float: none;
