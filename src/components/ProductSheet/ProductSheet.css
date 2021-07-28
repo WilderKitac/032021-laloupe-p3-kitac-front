@@ -154,5 +154,13 @@
 .zoom:hover {
   transition: transform 0.3s;
   transform: scale(0.2);
+}
 
+@media only screen and (min-width: 1024px) {
+  .ps_title {
+    margin: 0 auto;
+  }
+  .ps_slider_container {
+    width: 50%;
+  }
 }
