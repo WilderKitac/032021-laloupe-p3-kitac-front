@@ -28,7 +28,7 @@ export default class ModalContact extends React.Component {
     })
       .then((data) => data.data)
       .then(() => {
-        console.log('ok');
+        this.handleShowDialog();
         alert('Votre message a été envoyé');
       })
       .catch((err) => {
@@ -82,7 +82,9 @@ export default class ModalContact extends React.Component {
                     />
                   </label>
                   <input className="btnContact" type="submit" value="Envoyer" />
-                  <button className="btnContact" type="button" onClick={this.handleShowDialog}>Annuler</button>
+                  <button className="btnContact" type="button" onClick={this.handleShowDialog}>
+                    Annuler
+                  </button>
                 </form>
               </div>
             </section>
