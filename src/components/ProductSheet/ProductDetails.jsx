@@ -51,59 +51,63 @@ function ProductDetails() {
   return (
     <section className="ps_mainSection">
       <h1 className="ps_title">{prodDetail?.maininformation[0].name}</h1>
-      <div className="ps_slider_container">
-        <Carousel thumbWidth={40} infiniteLoop={true} autoPlay>
-          {prodDetail?.images.map((image) => (
-            <>
-              <img key={image.id} src={image.link} alt={image.alt}></img>
-              <p className="legend">{image.alt}</p>
-            </>
-          ))}
-        </Carousel>
-      </div>
-      <div className="ps_general">
-        <p className="ps_price">{prodDetail?.maininformation[0].product_price.toFixed(2)}€</p>
-        <div className="ps_difficulty">
-          <p>
-            <strong>Difficulté : </strong>
-          </p>
-          <div>
-            <img className="ps_button" src="../src/img/button-3D.png" alt="bouton" />
-            <img
-              className={
-                prodDetail?.maininformation[0].difficulty === 'Moyenne' || prodDetail?.maininformation[0].difficulty === 'Difficile'
-                  ? 'ps_button'
-                  : 'ps_button ps_button_inactive'
-              }
-              src="../src/img/button-3D.png"
-              alt="bouton"
-            />
-            <img
-              className={prodDetail?.maininformation[0].difficulty === 'Difficile' ? 'ps_button' : 'ps_button ps_button_inactive'}
-              src="../src/img/button-3D.png"
-              alt="bouton"
-            />
-          </div>
+      <div className="ps_presentation">
+        <div className="ps_slider_container">
+          <Carousel thumbWidth={40} infiniteLoop={true} autoPlay>
+            {prodDetail?.images.map((image) => (
+              <>
+                <img key={image.id} src={image.link} alt={image.alt}></img>
+                <p className="legend">{image.alt}</p>
+              </>
+            ))}
+          </Carousel>
         </div>
-        <p>
-          <strong>Réalisation : </strong>+/- {prodDetail?.maininformation[0].completion_time}
-        </p>
-        <p>
-          <strong>Description : </strong>
-          {prodDetail?.maininformation[0].description}
-        </p>
-      </div>
-      <div className="ps_material_container">
-        <h2>Matières</h2>
-        <div className="ps_materials">
-          {prodDetail?.materials.map((material) => (
-            <div className="zoom">
-              <figure key={material.id}>
-                <img className="ps_material_image" src={`${API_BASE_URL}/image/${material.image}`} alt={material.material_type}></img>
-                <p key={material.id}>{material.material_type}</p>
-              </figure>
+        <div className="ps_properties">
+          <div className="ps_general">
+            <p className="ps_price">{prodDetail?.maininformation[0].product_price.toFixed(2)}€</p>
+            <div className="ps_difficulty">
+              <p>
+                <strong>Difficulté : </strong>
+              </p>
+              <div>
+                <img className="ps_button" src="../src/img/button-3D.png" alt="bouton" />
+                <img
+                  className={
+                    prodDetail?.maininformation[0].difficulty === 'Moyenne' || prodDetail?.maininformation[0].difficulty === 'Difficile'
+                      ? 'ps_button'
+                      : 'ps_button ps_button_inactive'
+                  }
+                  src="../src/img/button-3D.png"
+                  alt="bouton"
+                />
+                <img
+                  className={prodDetail?.maininformation[0].difficulty === 'Difficile' ? 'ps_button' : 'ps_button ps_button_inactive'}
+                  src="../src/img/button-3D.png"
+                  alt="bouton"
+                />
+              </div>
             </div>
-          ))}
+            <p>
+              <strong>Réalisation : </strong>+/- {prodDetail?.maininformation[0].completion_time}
+            </p>
+            <p>
+              <strong>Description : </strong>
+              {prodDetail?.maininformation[0].description}
+            </p>
+          </div>
+          <div className="ps_material_container">
+            <h2>Matières :</h2>
+            <div className="ps_materials">
+              {prodDetail?.materials.map((material) => (
+                <div key={material.id}>
+                  <figure>
+                    <img className="ps_material_image" src={`${API_BASE_URL}/image/${material.image}`} alt={material.material_type}></img>
+                    <p key={material.id}>{material.material_type}</p>
+                  </figure>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
       <div className="ps_tabContainer">

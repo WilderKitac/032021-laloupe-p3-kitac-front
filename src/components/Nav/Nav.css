@@ -112,15 +112,8 @@
   #menu.clicked {
     bottom: 10vh;
   }
-  
-  /* #menuContent {
-    width: 100%;
-    background: linear-gradient(#0678cf, #021c42);
-    margin: 0;
-    padding-bottom: 1em;
-  } */
-  
-  a {
+    
+  .nav {
     color: black;
     font-family: Anton;
     font-size: 1.5em;
