@@ -21,7 +21,7 @@ export default class ModalConcept extends React.Component {
         <div>
           {this.state.isOpen && (
             <dialog className="dialog" open onClick={this.handleShowDialog}>
-              <h3 className="modalTitre">Concept</h3>
+              <h3 className="modalTitre">Le concept</h3>
               <h3 className="modalText">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, illum odit impedit autem quasi quidem eos doloribus veritatis nisi ab
                 fuga atque aperiam voluptates facere nemo! Vero labore maxime fugit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius

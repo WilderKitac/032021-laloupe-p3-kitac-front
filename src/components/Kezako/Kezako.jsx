@@ -8,33 +8,21 @@ import './Kezako.css';
 
 function Kezako() {
   return (
-    <section className="body">
-      <div className="encadreShop">
+    <section className="bodyKezako">
+      <div className="carouselKezako">
         <h1 className="titleShop">KITAC KEZAKO</h1>
-        <Carousel>
-          <img className="grandePhoto" src="src/img/equipe.jpg" alt="photo 1" />
-          <img className="grandePhoto" src="src/img/equipe.jpg" alt="photo 2" />
-          <img className="grandePhoto" src="src/img/equipe.jpg" alt="photo 3"/>
-          <img className="grandePhoto" src="src/img/equipe.jpg" alt="photo 4"/>
+        <Carousel showIndicators={false} showThumbs={false}>
+          <img className="grandePhoto" src="https://cache.marieclaire.fr/data/photo/w600_h315_ci/5b/couturematerielindispensable.jpg" alt="photo 1" />
+          <img className="grandePhoto" src="https://cache.marieclaire.fr/data/photo/w600_h315_ci/5b/couturematerielindispensable.jpg" alt="photo 2" />
+          <img className="grandePhoto" src="https://cache.marieclaire.fr/data/photo/w600_h315_ci/5b/couturematerielindispensable.jpg" alt="photo 3" />
+          <img className="grandePhoto" src="https://cache.marieclaire.fr/data/photo/w600_h315_ci/5b/couturematerielindispensable.jpg" alt="photo 4" />
         </Carousel>
       </div>
-
-      {/* <div className="zoom">
-        <a href="http://localhost:3000/shop">
-          <img
-            className="grandePhoto"
-            src="src/img/equipe.jpg"
-            alt="photo"
-            onClick="http://localhost:3000/shop"
-          />
-        </a>
-      </div> */}
-      <div className="container">
+      <div className="containerKezako">
         <article>
           <ModalConcept />
           <h3 className="text">Le concept</h3>
         </article>
-
         <article>
           <ModalEquipe />
           <h3 className="text">L'équipe</h3>
