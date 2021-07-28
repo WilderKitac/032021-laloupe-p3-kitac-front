@@ -20,7 +20,7 @@ function Footer() {
         </Link>
       </div>
       <div className="footerText">
-          <p> CGV </p>
+        <p> CGV </p>
         <p> Mention Légales </p>
         <p> Paiement & livraison </p>
         <p> FAQ </p>
