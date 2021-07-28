@@ -54,3 +54,18 @@
 .logoLink {
   width: 33%;
 }
+
+@media screen and (min-width: 1024px) {
+
+  .footer {
+    height: 10vh;
+  }
+
+  .footerText p {
+    margin-bottom: 5%;
+  }
+  
+  .footerNetwork p {
+    margin-bottom: 5%;
+  }
+}
