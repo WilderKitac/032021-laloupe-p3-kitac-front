@@ -10,8 +10,8 @@ function Footer() {
         <img className="logoFooter" alt="imageFooter" src="/src/img/KITAC_logo-07.png" />
       </div>
       <div className="footerText">
-        <Link className="FooterLink" to="/ProductSheet">
-          Boutik
+        <Link className="FooterLink" to="/shop/0">
+          <p> Boutik </p>
         </Link>
         <p> Kitac et Vous</p>
         <p> La Gazette </p>
@@ -20,9 +20,7 @@ function Footer() {
         </Link>
       </div>
       <div className="footerText">
-      <Link className="FooterLink" to="/Cart">
-        <p> CGV </p>
-        </Link>
+          <p> CGV </p>
         <p> Mention Légales </p>
         <p> Paiement & livraison </p>
         <p> FAQ </p>
