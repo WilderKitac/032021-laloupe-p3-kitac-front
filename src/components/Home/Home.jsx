@@ -28,18 +28,20 @@ function Home() {
             since the 1500s
           </p>
         </div>
-        <div className="encadreShop">
-          <h1 className="titleShop">LA BOUTIK A KITS</h1>
-          <Carousel showThumbs={false} infiniteLoop={true} showStatus={false} autoPlay>
-            {categories?.map((item) => (
-              <>
-                <img key={`image ${item.id}`} src={item.img_link} alt={item.img_alt} />
-                <Link to={`/shop/${item.id}/${item.name}`} key={item.id} className="legend">
-                  {item.name}
-                </Link>
-              </>
-            ))}
-          </Carousel>
+        <div className="Pomme">
+          <div className="encadreShop">
+            <h1 className="titleShop">LA BOUTIK A KITS</h1>
+            <Carousel showThumbs={false} infiniteLoop={true} showStatus={false} autoPlay className="carrouselHome">
+              {categories?.map((item) => (
+                <>
+                  <img key={`image ${item.id}`} src={item.img_link} alt={item.img_alt} />
+                  <Link to={`/shop/${item.id}/${item.name}`} key={item.id} className="legend">
+                    {item.name}
+                  </Link>
+                </>
+              ))}
+            </Carousel>
+          </div>
         </div>
       </div>
       <div className="h_separe">
@@ -54,8 +56,8 @@ function Home() {
         </p>
       </div>
       <div className="h_ImageHome">
-        <img alt="imageHome" src="https://picsum.photos/150/100" />
-        <img alt="imageHome2" src="https://picsum.photos/150/100" />
+        <img className="coutureOne" alt="imageHome" src="/src/img/coutureOne.jpg" />
+        <img className="coutureTwo" alt="imageHome2" src="/src/img/coutureTwo.webp" />
       </div>
       <div className="h_Bouton">
         <button className="h_cart_button">Je me lance</button>

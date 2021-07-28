@@ -5,6 +5,7 @@
   color: white;
   padding: 5% 0;
   font-size: 0.8rem;
+  margin-bottom: 10vh;
 }
 
 .FooterLink {
@@ -52,4 +53,19 @@
 
 .logoLink {
   width: 33%;
+}
+
+@media screen and (min-width: 1024px) {
+
+  .footer {
+    height: 10vh;
+  }
+
+  .footerText p {
+    margin-bottom: 5%;
+  }
+  
+  .footerNetwork p {
+    margin-bottom: 5%;
+  }
 }
