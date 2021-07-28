@@ -67,9 +67,9 @@ export default function Login({ refreshToken }) {
   };
 
   return (
-    <>
+    <section className="login_container">
       <form className="form" onSubmit={(event) => handleSubmit(event)}>
-        <h2>Page de connexion</h2>
+        <h1>Page de connexion</h1>
         <label htmlFor="email" className="form__label">
           Email : <input type="email" id="email" className="form__input" value={email} onChange={(event) => setEmail(event.target.value)} />
         </label>
@@ -77,9 +77,9 @@ export default function Login({ refreshToken }) {
           Mot de passe :{' '}
           <input type="password" id="password" className="form__input" value={password} onChange={(event) => setPassword(event.target.value)} />
         </label>
-        <input className="button" type="submit" value="Se connecter" />
+        <input className="_button" type="submit" value="Se connecter" />
+        <input className="_button" type="button" value="Se déconnecter" onClick={handleLogout}></input>
       </form>
-      <input className="button" type="button" value="Se déconnecter" onClick={handleLogout}></input>
-    </>
+    </section>
   );
 }
