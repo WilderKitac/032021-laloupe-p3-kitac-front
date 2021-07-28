@@ -19,20 +19,20 @@ export default class ModalConcept extends React.Component {
           alt="no image"
         />
         <div>
-        {this.state.isOpen && (
-          <dialog className="dialog" open onClick={this.handleShowDialog}>
-            <h3 className="modalTitre">Concept</h3>
-            <h3 className="modalText">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, illum odit impedit autem quasi quidem eos doloribus veritatis nisi ab fuga
-              atque aperiam voluptates facere nemo! Vero labore maxime fugit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius suscipit
-              maxime ut. Deleniti nam tempora quas quis praesentium laborum inventore assumenda, dolorem, perferendis ducimus blanditiis quae saepe,
-              laudantium quo vel. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi dignissimos possimus voluptates molestias harum,
-              aliquam maiores recusandae assumenda consequatur iure nam tempora neque ducimus dolor delectus non. Optio, quo explicabo. Lorem ipsum
-              dolor sit amet consectetur adipisicing elit. Quaerat corporis laboriosam excepturi nemo. Id quaerat ad totam ea itaque accusamus
-              officia, dolore repellendus saepe ducimus facere recusandae cupiditate quibusdam nemo!
-            </h3>
-          </dialog>
-        )}
+          {this.state.isOpen && (
+            <dialog className="dialog" open onClick={this.handleShowDialog}>
+              <h3 className="modalTitre">Concept</h3>
+              <h3 className="modalText">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, illum odit impedit autem quasi quidem eos doloribus veritatis nisi ab
+                fuga atque aperiam voluptates facere nemo! Vero labore maxime fugit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
+                suscipit maxime ut. Deleniti nam tempora quas quis praesentium laborum inventore assumenda, dolorem, perferendis ducimus blanditiis
+                quae saepe, laudantium quo vel. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi dignissimos possimus voluptates
+                molestias harum, aliquam maiores recusandae assumenda consequatur iure nam tempora neque ducimus dolor delectus non. Optio, quo
+                explicabo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat corporis laboriosam excepturi nemo. Id quaerat ad totam ea
+                itaque accusamus officia, dolore repellendus saepe ducimus facere recusandae cupiditate quibusdam nemo!
+              </h3>
+            </dialog>
+          )}
         </div>
       </div>
     );
