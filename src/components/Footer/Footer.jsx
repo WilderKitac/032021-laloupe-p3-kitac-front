@@ -24,7 +24,7 @@ function Footer() {
         <p> CGV </p>
         </Link>
         <p> Mention Légales </p>
-        <p> Paiment & livraison </p>
+        <p> Paiement & livraison </p>
         <p> FAQ </p>
       </div>
       <div className="footerNetwork">
