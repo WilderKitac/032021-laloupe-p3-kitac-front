@@ -8,7 +8,7 @@ import './Kezako.css';
 
 function Kezako() {
   return (
-    <section className="body">
+    <section className="bodyKezako">
       <div className="carouselKezako">
         <h1 className="titleShop">KITAC KEZAKO</h1>
         <Carousel showIndicators={false} showThumbs={false}>
@@ -18,7 +18,7 @@ function Kezako() {
           <img className="grandePhoto" src="https://cache.marieclaire.fr/data/photo/w600_h315_ci/5b/couturematerielindispensable.jpg" alt="photo 4" />
         </Carousel>
       </div>
-      <div className="container">
+      <div className="containerKezako">
         <article>
           <ModalConcept />
           <h3 className="text">Le concept</h3>
