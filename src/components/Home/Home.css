@@ -9,7 +9,6 @@
 .titreHome,
 .titleShop {
   text-align: center;
-  /* margin-top: 5%; */
   margin-bottom: 5%;
 }
 
@@ -99,4 +98,42 @@ hr {
 .h_separe {
   display: flex;
   justify-content: center;
+}
+
+.coutureOne, .coutureTwo {
+  width: 40%;
+}
+
+@media screen and (min-width: 1024px) {
+
+  .titreHome,
+.titleShop {
+  text-align: center;
+  margin-bottom: 1%;
+}
+
+.encadreTitre {
+  margin-top: 1%;
+}
+
+.Pomme {
+  display: flex;
+  justify-content: center;
+}
+
+.encadreShop {
+   width: 60%; 
+}
+
+.coutureOne, .coutureTwo {
+  width: 25%;
+}
+
+.h_PartiTwo, .h_Bouton {
+  margin: 2% 0 
+}
+
+.h_imgCreatrice {
+  width: 30%;
+}
 }
