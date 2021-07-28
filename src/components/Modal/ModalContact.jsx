@@ -52,7 +52,7 @@ export default class ModalContact extends React.Component {
                 <form className="formulaireContact" onSubmit={this.sendEmail}>
                   <label className="formulaireContact">
                     Nom :
-                    <input
+                    <input className="inputName"
                       type="text"
                       name="name"
                       onChange={(event) => {
@@ -62,7 +62,7 @@ export default class ModalContact extends React.Component {
                   </label>
                   <label className="formulaireContact">
                     Email :
-                    <input
+                    <input className="inputName"
                       type="text"
                       email="email"
                       onChange={(event) => {
@@ -73,8 +73,7 @@ export default class ModalContact extends React.Component {
 
                   <label className="formulaireContact">
                     Message :
-                    <input
-                      type="text"
+                    <textarea className="messageContact"
                       name="name"
                       onChange={(event) => {
                         this.setState({ message: event.target.value });
