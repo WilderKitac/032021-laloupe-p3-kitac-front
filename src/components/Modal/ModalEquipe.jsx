@@ -1,7 +1,7 @@
 import React from 'react';
 import './ModalEquipe.css';
 
-export default class ImageComponent extends React.Component {
+export default class ModalEquipe extends React.Component {
   state = { isOpen: false };
 
   handleShowDialog = () => {
