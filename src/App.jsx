@@ -11,6 +11,7 @@ import Login from './components/Login/Login';
 import Shop from './components/Shop/Shop';
 import AdminPage from './components/Admin/AdminPage';
 import Cart from './components/cart/Cart';
+import Construction from './components/Construction/Construction';
 
 import './App.css';
 
@@ -85,6 +86,9 @@ function App() {
         </Route>
         <Route path="/Kezako">
           <Kezako />
+        </Route>
+        <Route path="/Construction">
+          <Construction />
         </Route>
         <Route path="/Cart">
           <Cart />
