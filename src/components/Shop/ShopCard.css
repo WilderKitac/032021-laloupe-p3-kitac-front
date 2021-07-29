@@ -19,3 +19,11 @@
     margin-top: 1em;
     color: #BF4913;
 }
+
+
+@media screen and (min-width: 1024px) {
+    
+    .SC_container {
+        width: 20%;
+    }
+}

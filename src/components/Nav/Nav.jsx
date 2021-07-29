@@ -42,7 +42,7 @@ function Nav() {
           Kezako
         </Link>
         {role === 2 && (
-          <Link className="nav" onClick={pageHaut} to="/Kezako">
+          <Link className="nav" onClick={pageHaut} to="/admin">
             Admin
           </Link>
         )}
