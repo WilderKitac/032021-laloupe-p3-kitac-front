@@ -11,7 +11,7 @@ export default class ModalEquipe extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="korone"> 
         <img
           className="imageModal"
           src="https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg"

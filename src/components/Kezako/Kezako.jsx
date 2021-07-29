@@ -12,23 +12,22 @@ function Kezako() {
       <div className="carouselKezako">
         <h1 className="titleShop">KITAC KEZAKO</h1>
         <Carousel showIndicators={false} showThumbs={false}>
-          <img className="grandePhoto" src="https://cache.marieclaire.fr/data/photo/w600_h315_ci/5b/couturematerielindispensable.jpg" alt="photo 1" />
-          <img className="grandePhoto" src="https://cache.marieclaire.fr/data/photo/w600_h315_ci/5b/couturematerielindispensable.jpg" alt="photo 2" />
-          <img className="grandePhoto" src="https://cache.marieclaire.fr/data/photo/w600_h315_ci/5b/couturematerielindispensable.jpg" alt="photo 3" />
-          <img className="grandePhoto" src="https://cache.marieclaire.fr/data/photo/w600_h315_ci/5b/couturematerielindispensable.jpg" alt="photo 4" />
+          <img className="grandePhoto" src="https://cache.marieclaire.fr/data/photo/w600_h315_ci/5b/couturematerielindispensable.jpg" alt="img1" />
+          <img className="grandePhoto" src="https://cache.marieclaire.fr/data/photo/w600_h315_ci/5b/couturematerielindispensable.jpg" alt="img2" />
+          <img className="grandePhoto" src="https://cache.marieclaire.fr/data/photo/w600_h315_ci/5b/couturematerielindispensable.jpg" alt="img3" />
+          <img className="grandePhoto" src="https://cache.marieclaire.fr/data/photo/w600_h315_ci/5b/couturematerielindispensable.jpg" alt="img4" />
         </Carousel>
       </div>
       <div className="containerKezako">
-        <article>
+        <article className="containerModal">
           <ModalConcept />
           <h3 className="text">Le concept</h3>
         </article>
-        <article>
+        <article className="containerModal">
           <ModalEquipe />
           <h3 className="text">L'équipe</h3>
         </article>
-
-        <article>
+        <article className="containerModal">
           <ModalContact />
           <h3 className="text">Contact</h3>
         </article>
