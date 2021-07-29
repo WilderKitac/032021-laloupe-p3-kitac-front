@@ -57,3 +57,23 @@
   color: #700000;
   padding-right: 2rem;
 }
+
+.mainCart {
+  min-height: 60vh;
+}
+
+@media screen and (min-width: 1024px) {
+  .cart_item {
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+  }
+
+  .cart_delete {
+    margin-right: 10%;
+  }
+
+  .cart_item_section_text {
+    padding-left: 10rem;
+  }
+}
