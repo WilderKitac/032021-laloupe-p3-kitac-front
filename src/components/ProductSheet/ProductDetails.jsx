@@ -56,7 +56,7 @@ function ProductDetails() {
           <Carousel thumbWidth={40} infiniteLoop={true} autoPlay>
             {prodDetail?.images.map((image) => (
               <>
-                <img key={image.id} src={image.link} alt={image.alt}></img>
+                <img key={image.id} src={`${API_BASE_URL}/image/${image.link}`} alt={image.alt}></img>
                 <p className="legend">{image.alt}</p>
               </>
             ))}

@@ -5,6 +5,8 @@ import React from 'react';
 import { useStateValue } from '../../context/contextProvider';
 import './ShopCard.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 function ShopCard(props) {
   const [{ prodId }, dispatch] = useStateValue();
 
@@ -13,7 +15,7 @@ function ShopCard(props) {
   }
   return (
     <section className="SC_container" onClick={recordProdId}>
-      <img className="SC_img" src={props.link} alt={props.alt} />
+      <img className="SC_img" src={`${API_BASE_URL}/image/${props.link}`} alt={props.alt} />
       <div className="SC_description">
         <h2>{props.name}</h2>
         <p>{props.description}</p>
