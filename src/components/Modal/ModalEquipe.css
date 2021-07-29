@@ -1,27 +1,11 @@
 .dialog {
   position: fixed;
-  right: 50;
   bottom: 15%;
   height: 80%;
   width: 90%;
   margin: auto;
   background-image: url(https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg);
-}
-
-.imageModal {
-  margin-top: 1em;
-  padding: 1em;
-  box-shadow: 1px 1px 10px grey;
-  max-width: 80%;
-  /* height: auto; */
-  margin: 3em;
-}
-
-.modalText {
-  color: white;
-  font-size: 1.5em;
-  padding: 2em;
-  margin: 1em;
+  z-index: 3;
 }
 
 .modalTitre {
@@ -32,7 +16,6 @@
 
 @media screen and (max-width: 1024px) {
   .dialog {
-    width: 70%;
-    height: 70%;
+    width: 80%;
   }
 }

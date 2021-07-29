@@ -9,7 +9,7 @@
   padding: 30px;
   border: 1px solid #ccc;
   margin-top: 6px;
-  margin-bottom: 40px;
+  margin-bottom: 2%;
   resize: vertical;
 }
 
@@ -20,10 +20,6 @@
   border: none;
   cursor: pointer;
 }
-
-/* .inputName[type='submit']:hover {
-  background-color: #bb3f2a;
-} */
 
 .contact {
   float: none;
@@ -38,11 +34,9 @@
   clear: both;
 }
 
-@media screen and (max-width: 600px) {
-  .column,
-  input[type='submit'] {
-    width: 100%;
-    margin-top: 0;
+@media screen and (max-width: 1024px) {
+  .buttonContact {
+    width: 75%;
   }
 }
 
@@ -61,6 +55,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2%;
 }
 
 .photoContact {
@@ -70,7 +65,6 @@
 
 .buttonContact {
   margin-bottom: 2em;
-  width: 10%;
   height: 20%;
   box-shadow: inset 0px 1px 3px 0px #91b8b3;
   background: linear-gradient(to bottom, #ccd5c9 5%, #0d3648 100%);

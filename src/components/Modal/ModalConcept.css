@@ -1,29 +1,33 @@
-/* .dialog {
-  right: 50;
-  bottom: 50%;
-  height: 55%;
-  background-image: url(https://bucket.mlcdn.com/a/3123/3123652/images/575af8a8a85f73d0cf1a0fec08f2380cdf1d956e.jpeg);
-} */
-
+.korone {
+  display: flex;
+  justify-content: center;
+}
 .imageModal {
-  margin-top: 1em;
   padding: 1em;
   box-shadow: 1px 1px 10px grey;
   max-width: 80%;
-  /* height: auto; */
-  margin: 3em;
-  z-index: 100;
+  margin-top: 3em;
 }
 
 .modalText {
-  color: white;
+  color: black;
   font-size: 1.5em;
   padding: 2em;
-  margin: 1em;
+  margin: 10% 3em;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .modalTitre {
   color: white;
   font-size: 1.5em;
   text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .modalText {
+    margin: auto;
+    padding: 1em;
+    font-size: 1em;
+    background: none;
+  }
 }
