@@ -58,7 +58,7 @@ export default function Cart() {
   };
 
   return (
-    <main>
+    <main className="mainCart">
       <h1>Résumé de votre panier</h1>
       {cart.length !== 0 ? (
         <section className="cart_container">
