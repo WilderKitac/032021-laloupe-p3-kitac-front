@@ -1,15 +1,24 @@
-.constructionPhoto {
-    width: 100%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-
+.construction_container {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
+.constructionPhoto {
+  margin-top: 10pt;
+  margin-bottom: 10pt;
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1em;
+}
 
 @media screen and (min-width: 1024px) {
-    .constructionPhoto{
-        width: 50%;
-    }
-    
+  .constructionPhoto {
+    width: 70%;
+    border-radius: 1em;
+  }
 }
