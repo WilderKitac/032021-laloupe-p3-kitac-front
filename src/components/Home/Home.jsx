@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
+import { useHistory } from 'react-router-dom';
 import './Home.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function Home() {
   const [categories, setCategories] = useState();
+  const history = useHistory();
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/api/categories/`)
@@ -21,11 +23,11 @@ function Home() {
     <section className="h_Main">
       <div className="backroundHome">
         <div className="encadreTitre">
-          <h1 className="titreHome">TITRE</h1>
-          <h2 className="titreHome">Sous Titre</h2>
+          <h1 className="titreHome">KITAC</h1>
+          <h2 className="titreHome">Pour le plaisir de coudre</h2>
           <p className="titreHome">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever
-            since the 1500s
+            Kitac vous propose des articles (vêtements et accessoires) composés de pièces de tissu prête s à assembler à la machine à coudre :{' '}
+            <strong>les kits à coudre</strong>
           </p>
         </div>
         <div className="Pomme">
@@ -51,8 +53,7 @@ function Home() {
         <h1 className="h_PartiTwo">Apprendre a coudre avec Kitac</h1>
         <h2 className="h_PartiTwo">Un concept original</h2>
         <p className="h_PartiTwo">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since
-          the 1500s.
+          Kitac vous proposera bientôt des packs de formation à la couture comportant des pièces de tissus et un accès à une plateforme e-learning.
         </p>
       </div>
       <div className="h_ImageHome">
@@ -60,7 +61,9 @@ function Home() {
         <img className="coutureTwo" alt="imageHome2" src="/src/img/coutureTwo.webp" />
       </div>
       <div className="h_Bouton">
-        <button className="h_cart_button">Je me lance</button>
+        <button className="h_cart_button" onClick={() => history.push('/Construction')}>
+          Je me lance
+        </button>
       </div>
       <div className="h_separe">
         <hr></hr>
@@ -69,8 +72,8 @@ function Home() {
         <h1>L&apos;EQUIPE</h1>
         <h2>Sous-tire</h2>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since
-          the 1500s.
+          Angélique et Valérie souhaitent mettre en place un modèle éco-responsable innovant d’apprentissage et de production à la demande tout en
+          réunissant valeurs, passions et compétences au sein d’un même projet.
         </p>
       </div>
       <div className="h_EncadreCrea">
@@ -84,7 +87,9 @@ function Home() {
         </figure>
       </div>
       <div className="h_Bouton">
-        <button className="h_cart_button">Faisons connaissance</button>
+        <button className="h_cart_button" onClick={() => history.push('/Kezako')}>
+          Faisons connaissance
+        </button>
       </div>
     </section>
   );

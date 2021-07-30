@@ -68,7 +68,7 @@ function CreateMaterial() {
       .then((data) => {
         setMatList(data);
       });
-  }, []);
+  }, [file]);
 
   // fonction pour mise à jour
   const updateFile = (e) => {
