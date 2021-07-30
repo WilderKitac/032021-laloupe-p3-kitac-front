@@ -88,7 +88,7 @@ function ProductDetails() {
               </div>
             </div>
             <p>
-              <strong>Réalisation : </strong>+/- {prodDetail?.maininformation[0].completion_time}
+              <strong>Réalisation : </strong>+/- {prodDetail?.maininformation[0].completion_time} h
             </p>
             <p>
               <strong>Description : </strong>

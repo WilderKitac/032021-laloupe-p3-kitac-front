@@ -43,7 +43,7 @@ export default function Cart() {
           })
             .then((data) => data.data)
             .then(() => {
-              alert("Votre commande est passée, nous revenons vers vous dès qu'lle est prise en charge");
+              alert("Votre commande est passée, nous revenons vers vous dès qu'elle est prise en charge");
             })
             .catch((err) => {
               alert(err.message);
@@ -67,7 +67,7 @@ export default function Cart() {
               <div key={`${item.id}-${index}`} className="cart_item">
                 <div className="cart_itm_mainInfos">
                   <div className="cart_item_section_img">
-                    <img src={item.prodImg} alt={item.prodName} />
+                    <img src={`${API_BASE_URL}/image/${item.prodImg}`} alt={item.prodName} />
                   </div>
                   <div className="cart_item_section_text">
                     <h2>{item.prodName}</h2>
