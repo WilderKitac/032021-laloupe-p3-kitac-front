@@ -1,9 +1,60 @@
-.text{
-    font-size: 30pt;
-    color: rgb(73, 34, 11);
+.containerKezako {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  margin: 0 auto;
+  font-size: 2 em;
 }
 
-.photo{
-    width: 60%;
+.containerModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photoKezako {
+  margin-top: 1em;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px grey;
+  max-width: 60%;
+  height: auto;
+  margin: 3em;
+}
+
+.body {
+  /* max-width: 1024px; */
+  /* margin: 20px auto; */
+  position: relative;
+}
+
+.grandePhoto {
+  display: block;
+  margin: auto;
+  display: table-cell;
+}
+
+.text {
+  color: rgb(73, 34, 11);
+  margin-top: 1.5em;
+}
+
+.zoom:hover {
+  transition: transform 0.9s;
+  transform: scale(1.1);
+}
+
+.carouselKezako {
+  width: 70%;
+  margin: auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .carouselKezako {
+    width: 100%;
+  }
+  .containerKezako {
+    flex-direction: column;
     align-items: center;
+  }
 }

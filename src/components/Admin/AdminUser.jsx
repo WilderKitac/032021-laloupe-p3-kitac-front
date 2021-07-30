@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useStateValue } from '../../context/contextProvider';
 import axios from 'axios';
-import AdminUserInformation from './AdminUserInformation';
+// import AdminUserInformation from './AdminUserInformation';
 import AdminUserCreate from './AdminUserCreate';
+import AdminUserDelete from './AdminUserDelete';
+import './adminForms.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
@@ -28,16 +30,10 @@ export default function AdminUser() {
     }
   }, [jwt]);
   return (
-    <div>
-      <h2>Gestion des utilisateurs</h2>
-      <ul>
-        {users.map((user) => (
-          <li key>
-            <AdminUserInformation {...user} />
-          </li>
-        ))}
-      </ul>
+    <div className="admin_main">
+      <h1>Gestion des utilisateurs</h1>
       <AdminUserCreate />
+      <AdminUserDelete users={users} />
     </div>
   );
 }

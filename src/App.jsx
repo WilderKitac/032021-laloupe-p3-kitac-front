@@ -11,13 +11,14 @@ import Login from './components/Login/Login';
 import Shop from './components/Shop/Shop';
 import AdminPage from './components/Admin/AdminPage';
 import Cart from './components/cart/Cart';
+import Construction from './components/Construction/Construction';
 
 import './App.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function App() {
-  const [{ prodId }, dispatch] = useStateValue();
+  const [{ prodId, role }, dispatch] = useStateValue();
 
   const refreshToken = () => {
     axios({
@@ -72,9 +73,11 @@ function App() {
         <Route path={['/shop/:id/:name', '/shop/:id']}>
           <Shop />
         </Route>
-        <Route path="/Admin">
-          <AdminPage />
-        </Route>
+        {role === 2 && (
+          <Route path="/Admin">
+            <AdminPage />
+          </Route>
+        )}
         <Route path="/ProductSheet">
           <ProductDetails />
         </Route>
@@ -83,6 +86,9 @@ function App() {
         </Route>
         <Route path="/Kezako">
           <Kezako />
+        </Route>
+        <Route path="/Construction">
+          <Construction />
         </Route>
         <Route path="/Cart">
           <Cart />

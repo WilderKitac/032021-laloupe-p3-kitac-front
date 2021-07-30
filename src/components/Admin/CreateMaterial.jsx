@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useStateValue } from '../../context/contextProvider';
 import axios from 'axios';
 import './adminForms.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function CreateMaterial() {
+  const [{ jwt }] = useStateValue();
   const [fileSelected, setFileSelected] = useState(null);
   const [file, setFile] = useState(null);
   const [type, setType] = useState(null);
@@ -41,6 +43,8 @@ function CreateMaterial() {
       axios({
         method: 'POST',
         url: `${API_BASE_URL}/api/materials`,
+        withCredentials: true,
+        headers: { authorization: `Bearer ${jwt}` },
         data,
       })
         .then((data) => data.data)
@@ -52,8 +56,8 @@ function CreateMaterial() {
           setPrice('');
           setQuantity('');
         })
-        .catch((err) => {
-          alert('Création du lien échouée');
+        .catch(() => {
+          alert('Création du lien a échoué : êtes-vous connecté ?');
         });
     }
   };
@@ -64,7 +68,7 @@ function CreateMaterial() {
       .then((data) => {
         setMatList(data);
       });
-  }, []);
+  }, [file]);
 
   // fonction pour mise à jour
   const updateFile = (e) => {
@@ -85,6 +89,8 @@ function CreateMaterial() {
       axios({
         method: 'POST',
         url: `${API_BASE_URL}/api/materials/withImage/${id}`,
+        withCredentials: true,
+        headers: { authorization: `Bearer ${jwt}` },
         data,
       })
         .then((data) => data.data)
@@ -108,13 +114,15 @@ function CreateMaterial() {
       axios({
         method: 'PUT',
         url: `${API_BASE_URL}/api/materials/${id}`,
+        withCredentials: true,
+        headers: { authorization: `Bearer ${jwt}` },
         data,
       })
         .then(() => {
           alert('Matière mise à jour avec succès');
         })
         .catch(() => {
-          alert('La mise à jour a échoué');
+          alert('La mise à jour a échoué : êtes-vous connecté ?');
         });
     }
   };
@@ -125,21 +133,23 @@ function CreateMaterial() {
     axios({
       method: 'DELETE',
       url: `${API_BASE_URL}/api/materials/${id}`,
+      withCredentials: true,
+      headers: { authorization: `Bearer ${jwt}` },
     })
       .then(() => {
         alert('Matière supprimée avec succès');
       })
       .catch(() => {
-        alert('La suppression a échoué');
+        alert('La suppression a échoué : êtes-vous connecté ?');
       });
   };
 
   return (
-    <section className="mat_admin">
+    <section className="admin_main">
       <h1>Gestion des matières</h1>
-      <div className="mat_div">
+      <div className="admin_div">
         <h2>Création</h2>
-        <form className="mat_form" onSubmit={submitFile}>
+        <form className="admin_form" onSubmit={submitFile}>
           <label>
             Nom de la matière:
             <input type="text" className="mat_input" value={type} onChange={(e) => setType(e.target.value)} placeholder="Coton, soie,..." />
@@ -156,89 +166,92 @@ function CreateMaterial() {
             {/* <img src="./src/img/upload.png" alt="selection_image" id="mat_upload" /> */}
             <input type="file" accept="image/*" onChange={onChangeFile} />
           </label>
-          <button className="mat_button" type="submit">
+          <button className="_button" type="submit">
             Charger le fichier
           </button>
           {file && <img src={`${API_BASE_URL}/image/${file.filename}`} alt="fichier chargé" />}
         </form>
       </div>
-      <div className="mat_div">
+      <div className="admin_div">
         <h2>Modification</h2>
-        <select
-          id="mat_matToSelect"
-          value={selectedMat}
-          onBlur={(item) => {
-            setSelectedMat(item.target.value);
-            setType(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].material_type);
-            setPrice(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].material_price);
-            setQuantity(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].quantity);
-          }}
-          onChange={(item) => {
-            setSelectedMat(item.target.value);
-            setType(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].material_type);
-            setPrice(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].material_price);
-            setQuantity(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].quantity);
-          }}>
-          <option defaultValue="unselect">Sélectionner la matière à modifier</option>
-          {matList?.map((item, index) => (
-            <option key={index} value={item.material_type}>
-              {item.material_type}
-            </option>
-          ))}
-        </select>
-        <h3>Informations matières:</h3>
-        {matList
-          ?.filter((item) => item.material_type.includes(selectedMat))
-          .map((item, index) => (
-            <form className="mat_form" key={`form_${index}`} onSubmit={updateFile}>
-              <p>Identifiant matière: {item.id}</p>
-              <p>Type : {item.material_type}</p>
-              <label>
-                Nouveau nom : <input type="text" key={index} value={type} onChange={(e) => setType(e.target.value)}></input>
-              </label>
-              <p>Prix : {item.material_price.toFixed(2)} €</p>
-              <label>
-                Nouveau prix : <input type="number" key={index} value={price} onChange={(e) => setPrice(e.target.value)}></input>
-              </label>
-              <p>Quantité : {item.quantity} </p>
-              <label>
-                Nouvelle quantité : <input type="number" key={index} value={quantity} onChange={(e) => setQuantity(e.target.value)}></input>
-              </label>
-              <p>
-                Aperçu :
-                <img src={`${API_BASE_URL}/image/${item.image}`} alt={item.material_type} />
-              </p>
-              <label>
-                <input type="file" accept="image/*" onChange={onChangeFile} />
-              </label>
-              <button className="mat_button" type="submit" onClick={() => setIdToUpdate(item.id)}>
-                Mettre à jour
-              </button>
-            </form>
-          ))}
+        <form className="admin_form" onSubmit={updateFile}>
+          <select
+            id="mat_matToSelect"
+            value={selectedMat}
+            onBlur={(item) => {
+              setSelectedMat(item.target.value);
+              setType(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].material_type);
+              setPrice(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].material_price);
+              setQuantity(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].quantity);
+            }}
+            onChange={(item) => {
+              setSelectedMat(item.target.value);
+              setType(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].material_type);
+              setPrice(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].material_price);
+              setQuantity(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].quantity);
+            }}>
+            <option defaultValue="unselect">Sélectionner la matière à modifier</option>
+            {matList?.map((item, index) => (
+              <option key={index} value={item.material_type}>
+                {item.material_type}
+              </option>
+            ))}
+          </select>
+          <h3>Informations matières:</h3>
+          {matList
+            ?.filter((item) => item.material_type.includes(selectedMat))
+            .map((item, index) => (
+              <>
+                <p>Identifiant matière: {item.id}</p>
+                <p>Type : {item.material_type}</p>
+                <label>
+                  Nouveau nom : <input type="text" key={index} value={type} onChange={(e) => setType(e.target.value)}></input>
+                </label>
+                <p>Prix : {item.material_price.toFixed(2)} €</p>
+                <label>
+                  Nouveau prix : <input type="number" key={index} value={price} onChange={(e) => setPrice(e.target.value)}></input>
+                </label>
+                <p>Quantité : {item.quantity} </p>
+                <label>
+                  Nouvelle quantité : <input type="number" key={index} value={quantity} onChange={(e) => setQuantity(e.target.value)}></input>
+                </label>
+                <p>
+                  Aperçu :
+                  <img src={`${API_BASE_URL}/image/${item.image}`} alt={item.material_type} />
+                </p>
+                <label>
+                  <input type="file" accept="image/*" onChange={onChangeFile} />
+                </label>
+                <button className="_button" type="submit" onClick={() => setIdToUpdate(item.id)}>
+                  Mettre à jour
+                </button>
+              </>
+            ))}
+        </form>
       </div>
-      <div className="mat_div">
+      <div className="admin_div">
         <h2>Suppression</h2>
-        <select
-          id="mat_matToDelete"
-          value={matToDelete}
-          onBlur={(item) => {
-            setMatToDelete(item.target.value);
-            setIdToDelete(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].id);
-          }}
-          onChange={(item) => {
-            setMatToDelete(item.target.value);
-            setIdToDelete(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].id);
-          }}>
-          <option defaultValue="unselect">Sélectionner la matière à supprimer</option>
-          {matList?.map((item, index) => (
-            <option key={index} value={item.material_type}>
-              {item.material_type}
-            </option>
-          ))}
-        </select>
-        <form className="mat_form" onSubmit={deleteMat}>
-          <button className="mat_button" type="submit">
+        <form className="admin_form" onSubmit={deleteMat}>
+          <select
+            id="mat_matToDelete"
+            value={matToDelete}
+            onBlur={(item) => {
+              setMatToDelete(item.target.value);
+              setIdToDelete(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].id);
+            }}
+            onChange={(item) => {
+              setMatToDelete(item.target.value);
+              setIdToDelete(matList?.filter((mat) => mat.material_type.includes(item.target.value))[0].id);
+            }}>
+            <option defaultValue="unselect">Sélectionner la matière à supprimer</option>
+            {matList?.map((item, index) => (
+              <option key={index} value={item.material_type}>
+                {item.material_type}
+              </option>
+            ))}
+          </select>
+
+          <button className="_button" type="submit">
             Effacer
           </button>
         </form>

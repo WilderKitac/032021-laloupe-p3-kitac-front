@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStateValue } from '../../context/contextProvider';
 import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
+import './AdminUserCreate.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
@@ -33,6 +34,8 @@ const UserValidation = object().shape({
 });
 
 export default function AdminUserCreate() {
+  const [rolesList, setRolesList] = useState(null);
+  const [roleId, setRoleId] = useState(0);
   const [{ jwt }] = useStateValue();
 
   const handleSubmit = (values, { resetForm }) => {
@@ -40,6 +43,7 @@ export default function AdminUserCreate() {
     userToCreate.name = `${values.firstname} ${values.lastname}`;
     userToCreate.address = `${values.rue} ${values.codePostal} ${values.ville}`;
     userToCreate.clearPassword = `${values.password}`;
+    userToCreate.user_types_id = `${roleId}`;
     delete userToCreate.rue;
     delete userToCreate.codePostal;
     delete userToCreate.ville;
@@ -64,6 +68,15 @@ export default function AdminUserCreate() {
     // }
   };
 
+  //récupération des rôles
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/api/userTypes`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        setRolesList(data);
+      });
+  }, []);
+
   return (
     <Formik
       initialValues={{
@@ -81,50 +94,75 @@ export default function AdminUserCreate() {
       {() => {
         return (
           <Form>
-            <div>
-              <div>
+            <div className="admin_div">
+              <h2>Création d&apos;un utilisateur</h2>
+              <div className="admin_form">
                 <label htmlFor="firstname">
-                  Prénom:
+                  Prénom :
                   <Field name="firstname" id="firstname" />
                   <ErrorMessage name="firstname" component="div" />
                 </label>
                 <label htmlFor="lastname">
-                  Nom:
+                  Nom :
                   <Field name="lastname" id="lastname" />
                   <ErrorMessage name="lastname" component="div" />
                 </label>
                 <label htmlFor="email">
-                  Email:
+                  Email :
                   <Field name="email" id="email" />
                   <ErrorMessage name="email" component="div" />
                 </label>
                 <label htmlFor="password">
-                  Mot de passe:
+                  Mot de passe :
                   <Field name="password" id="password" />
                   <ErrorMessage name="password" component="div" />
                 </label>
                 <label htmlFor="phone">
-                  Numéro de téléphone:
+                  Numéro de téléphone :
                   <Field name="phone" id="phone" />
                   <ErrorMessage name="phone" component="div" />
                 </label>
                 <label htmlFor="rue">
-                  Rue:
+                  Rue :
                   <Field name="rue" id="rue" />
                   <ErrorMessage name="rue" component="div" />
                 </label>
                 <label htmlFor="codePostal">
-                  Code Postal:
+                  Code Postal :
                   <Field name="codePostal" id="codePostal" />
                   <ErrorMessage name="codePostal" component="div" />
                 </label>
                 <label htmlFor="ville">
-                  Ville/Commune:
+                  Ville/Commune :
                   <Field name="ville" id="ville" />
                   <ErrorMessage name="ville" component="div" />
                 </label>
+                <label htmlFor="userType">
+                  Sélectionner le rôle :
+                  <Field
+                    name="userType"
+                    as="select"
+                    onBlur={(item) => {
+                      item.target.value === 'Aucune'
+                        ? setRoleId('')
+                        : setRoleId(rolesList?.filter((role) => role.title.includes(item.target.value))[0].id);
+                    }}
+                    onChange={(item) => {
+                      item.target.value === 'Aucune'
+                        ? setRoleId('')
+                        : setRoleId(rolesList?.filter((role) => role.title.includes(item.target.value))[0].id);
+                    }}>
+                    {rolesList?.map((item, index) => (
+                      <option key={index} value={item.title}>
+                        {item.title}
+                      </option>
+                    ))}
+                  </Field>
+                </label>
+                <button type="submit" className="_button">
+                  Submit
+                </button>
               </div>
-              <button type="submit">Submit</button>
             </div>
           </Form>
         );

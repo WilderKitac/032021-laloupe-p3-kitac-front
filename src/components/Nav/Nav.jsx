@@ -5,7 +5,7 @@ import './Nav.css';
 
 function Nav() {
   const [appearedMenu, setAppearedMenu] = useState(false);
-  const [{ cart, user }] = useStateValue();
+  const [{ cart, user, role }] = useStateValue();
 
   function menuAppearing() {
     setAppearedMenu(!appearedMenu);
@@ -17,11 +17,11 @@ function Nav() {
   return (
     <main>
       <div id="NavMenu">
-        <Link className="nav_login" onClick={pageHaut} to="/Login">
+        <Link className="nav_login nav" onClick={pageHaut} to="/Login">
           <img src="/src/img/userIcon.png" alt="panier" />
           <p className={user.length !== 0 ? 'online ' : 'offline'}></p>
         </Link>
-        <Link className="nav_cart" onClick={pageHaut} to="/cart">
+        <Link className="nav_cart nav" onClick={pageHaut} to="/cart">
           <img src="/src/img/emptyCart.png" alt="panier" />
           <p className={cart.length !== 0 ? 'counter' : 'emptyCart'}>{cart.length}</p>
         </Link>
@@ -32,15 +32,20 @@ function Nav() {
         </div>
       </div>
       <nav id="menu" className={appearedMenu ? 'clicked' : ''}>
-        <Link onClick={pageHaut} to="/">
+        <Link className="nav" onClick={pageHaut} to="/">
           Accueil
         </Link>
-        <Link onClick={pageHaut} to="/shop/0">
+        <Link className="nav" onClick={pageHaut} to="/shop/0">
           Boutique
         </Link>
-        <Link onClick={pageHaut} to="/Kezako">
+        <Link className="nav" onClick={pageHaut} to="/Kezako">
           Kezako
         </Link>
+        {role === 2 && (
+          <Link className="nav" onClick={pageHaut} to="/admin">
+            Admin
+          </Link>
+        )}
       </nav>
     </main>
   );
